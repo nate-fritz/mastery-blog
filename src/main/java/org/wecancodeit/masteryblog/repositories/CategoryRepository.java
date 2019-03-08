@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.wecancodeit.masteryblog.models.Post;
 
 @Repository
-public interface PostRepository extends CrudRepository<Post, Long> {
-
-	
+public interface CategoryRepository extends CrudRepository<Post, Long> {
 
 }

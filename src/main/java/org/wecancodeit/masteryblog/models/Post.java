@@ -1,9 +1,14 @@
 package org.wecancodeit.masteryblog.models;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -12,55 +17,83 @@ public class Post {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-	private int price;
+	private String title;
 	private int year;
-	private String publisher;
 	@Lob
-	private String content;
+	private String body;
+	private String imgUrl;
 
 	@ManyToOne
-	private Tag tag;
-	
+	private Category category;
+
+	@ManyToMany
+	private Collection<Tag> tags;
+
+	@ManyToOne
+	private List<Author> author;
+
 	public Post() {
 	}
 
-	public Post(String name, int price, int year, String publisher, String content) {
-		this.name = name;
-		this.price = price;
+
+
+	public Post(String title, int year, String body, String imgUrl, Category category, Author author, Tag ...tags) {
+	
+		this.title = title;
 		this.year = year;
-		this.publisher = publisher;
-		this.content = content;
+		this.body = body;
+		this.imgUrl = imgUrl;
+		this.category = category;
+		this.tags = Arrays.asList(tags);
+		this.author = Arrays.asList(author);
 	}
+
+
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public int getPrice() {
-		return price;
+	public String getTitle() {
+		return title;
 	}
 
 	public int getYear() {
 		return year;
 	}
 
-	public String getPublisher() {
-		return publisher;
+	public String getBody() {
+		return body;
 	}
 
-	public String getContent() {
-		return content;
+	public String getImgUrl() {
+		return imgUrl;
 	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public Collection<Tag> getTags() {
+		return tags;
+	}
+
+	public List<Author> getAuthor() {
+		return author;
+	}
+
+	
+
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", year=" + year + ", publisher="
-				+ publisher + ", content=" + content + "]";
+		return "Post [id=" + id + ", title=" + title + ", year=" + year + ", body=" + body + ", imgUrl=" + imgUrl
+				+ ", category=" + category + ", tags=" + tags + ", author=" + author + "]";
 	}
+
+
+
+
+	
 
 }

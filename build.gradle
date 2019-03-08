@@ -5,6 +5,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'eclipse'
 
 group = 'org.wecancodeit'
 version = '0.0.1-SNAPSHOT'
