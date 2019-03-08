@@ -5,7 +5,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Tag {
@@ -15,7 +15,7 @@ public class Tag {
 	private Long id;
 	private String tagLabel;
 
-	@OneToMany(mappedBy = "tag")
+	@ManyToMany
 	private Collection<Post> posts;
 
 	public Tag() {
@@ -35,6 +35,13 @@ public class Tag {
 
 	public Collection<Post> getProducts() {
 		return posts;
+	}
+	
+	
+
+	private void add(Tag tag) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
