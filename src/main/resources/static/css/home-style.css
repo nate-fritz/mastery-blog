@@ -54,12 +54,13 @@ header {
 }
 
 .header__logo {
-  height: 10rem;
+  height: 100%;
   width: auto;
-  margin-top: -3rem;
-  margin-bottom: -3rem;
-  margin-left: -1rem;
+  margin: 2px;
+  max-height: 80px;
+  margin-bottom: -10px;
 }
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -236,10 +237,11 @@ header ul {
 
 /* Mobile popup menu CSS - This is the content of the popup menu */
 .menu__logo__png {
-  text-align: center;
-  height: 10rem;
+  height: 100%;
   width: auto;
-  margin: -2rem;
+  margin: 1rem;
+  margin-top: -1rem;
+  max-height: 80px;
 }
 
 .menu__search {
@@ -336,7 +338,7 @@ header ul {
 }
 
 .viewport {
-  background-image: url("https://i.imgur.com/LEesFVy.png");
+  background-image: url(../img/redder-orange-background.png);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -383,7 +385,7 @@ header ul {
     display: flex;
     margin: 0;
     padding: 0;
-    height: 350px;
+    height: 360px;
   }
   
   .mobile__menu__button {
@@ -423,7 +425,9 @@ header ul {
   align-self: center;
   margin-left: auto;
   margin-right: auto;
-  height: 150%;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 90%;
   padding-right: 2rem;
 }
 
