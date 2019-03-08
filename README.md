@@ -1,6 +1,6 @@
 # mastery-blog
 
-# Blog Platform# Objective
+# Objective
 
 Students will employ good software design and testing principles in order to create a full-stack, server-side-rendered, web application.
 Students will build the front-end portion using HTML, Thymeleaf, and CSS. (No frameworks, No JS… at all)
