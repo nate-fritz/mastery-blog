@@ -450,10 +450,14 @@ header ul {
 
 /* (7) Footer */
 .footer {
-  background-color: transparent;
+  background-color: white;
   border-radius: 0px;
   border-style: none;
   box-shadow: 1px 1px 1px 1px;
   display: flex;
   justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
