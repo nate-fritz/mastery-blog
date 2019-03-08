@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.masteryblog.models.Author;
+import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.models.Post;
+import org.wecancodeit.masteryblog.models.Tag;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
 import org.wecancodeit.masteryblog.repositories.TagRepository;
 
@@ -41,8 +44,9 @@ public class PostController {
 	}
 
 	@PostMapping("/add")
-	public String addPost(String name, int year, int price, String publisher, String content) {
-		postRepo.save(new Post(name, year, price, publisher, content));
+	public String addPost(String title, int year, String body, String imgUrl, Category category, 
+			Author author, Tag ...tags) {
+		postRepo.save(new Post(title,  year,  body,  imgUrl,  category,  author, tags));
 		return "redirect:/posts";
 	}
 }

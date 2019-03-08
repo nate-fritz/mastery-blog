@@ -1,13 +1,11 @@
 package org.wecancodeit.masteryblog.models;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class Author {
@@ -16,15 +14,17 @@ public class Author {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	
-	@ManyToMany
+
+	@OneToMany(mappedBy = "author")
 	private Collection<Post> posts;
-	
-	public Author() {}
-	
-	public Author(String name, Post ...posts) {
+
+	public Author() {
+	}
+
+	public Author(String name, Collection<Post> posts) {
+		super();
 		this.name = name;
-		this.posts = Arrays.asList(posts);
+		this.posts = posts;
 	}
 
 	public Long getId() {
@@ -38,15 +38,15 @@ public class Author {
 	public Collection<Post> getPosts() {
 		return posts;
 	}
-	
-	public void addPostToPosts(Post post) {
-		posts.add(post);
-	}
 
 	@Override
 	public String toString() {
 		return "Author [id=" + id + ", name=" + name + ", posts=" + posts + "]";
 	}
-	
-	
+
+	public void addPostToPosts(Post post) {
+		posts.add(post);
+		
+	}
+
 }
