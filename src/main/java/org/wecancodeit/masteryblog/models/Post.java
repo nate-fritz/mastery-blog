@@ -2,7 +2,6 @@ package org.wecancodeit.masteryblog.models;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +29,7 @@ public class Post {
 	private Collection<Tag> tags;
 
 	@ManyToOne
-	private List<Author> author;
+	private Author author;
 
 	public Post() {
 	}
@@ -45,7 +44,7 @@ public class Post {
 		this.imgUrl = imgUrl;
 		this.category = category;
 		this.tags = Arrays.asList(tags);
-		this.author = Arrays.asList(author);
+		this.author = author;
 	}
 
 
@@ -78,11 +77,13 @@ public class Post {
 		return tags;
 	}
 
-	public List<Author> getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	
+	public void addTagToTags(Tag tag) {
+		tags.add(tag);
+	}
 
 
 	@Override
