@@ -46,7 +46,10 @@ public class PostController {
 	@PostMapping("/add")
 	public String addPost(String title, int year, String body, String imgUrl, Category category, 
 			Author author, Tag ...tags) {
-		postRepo.save(new Post(title,  year,  body,  imgUrl,  category,  author, tags));
+		postRepo.save(new Post(title,  year,  body,  imgUrl));
 		return "redirect:/posts";
 	}
-}
+
+		
+	}
+

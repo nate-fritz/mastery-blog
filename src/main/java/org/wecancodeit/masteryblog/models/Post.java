@@ -34,15 +34,15 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(String title, int year, String body, String imgUrl, Category category, Author author, Tag ...tags) {
+	public Post(String title, int year, String body, String imgUrl) {
 
 		this.title = title;
 		this.year = year;
 		this.body = body;
-		this.imgUrl = imgUrl;
-		this.category = category;
-		this.tags = Arrays.asList(tags);
-		this.author = author;
+//		this.imgUrl = imgUrl;
+//		this.category = category;
+//		this.tags = Arrays.asList(tags);
+//		this.author = author;
 	}
 
 	public Long getId() {

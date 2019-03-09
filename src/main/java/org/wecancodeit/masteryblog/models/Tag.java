@@ -21,8 +21,8 @@ public class Tag {
 	public Tag() {
 	}
 
-	public Tag(String stringofTags) {
-		this.tagLabel = stringofTags;
+	public Tag(String tagLabel) {
+		this.tagLabel = tagLabel;
 	}
 
 	public Long getId() {

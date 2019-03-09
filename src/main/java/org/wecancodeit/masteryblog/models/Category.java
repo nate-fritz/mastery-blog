@@ -34,7 +34,7 @@ public class Category {
 		return id;
 	}
 
-	public String getCategoryName() {
+	public String getName() {
 		return name;
 	}
 
