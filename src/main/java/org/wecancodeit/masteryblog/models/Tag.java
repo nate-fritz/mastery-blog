@@ -37,7 +37,9 @@ public class Tag {
 		return posts;
 	}
 	
-	
+	public void addTagToPosts(Tag tag) {
+		tag.add(tag);
+	}
 
 	private void add(Tag tag) {
 		// TODO Auto-generated method stub
