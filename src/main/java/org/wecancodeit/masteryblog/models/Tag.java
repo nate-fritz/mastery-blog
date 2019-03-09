@@ -15,14 +15,17 @@ public class Tag {
 	private Long id;
 	private String tagLabel;
 
-	@ManyToMany(mappedBy = "tags")
+	@ManyToMany(mappedBy="tags")
 	private Collection<Post> posts;
 
-	public Tag() {
-	}
+	public Tag() {}
 
-	public Tag(String stringofTags) {
-		this.tagLabel = stringofTags;
+	public Tag(String postTags) {
+		this.tagLabel = postTags;
+	}
+	
+	public Collection<Post> getPosts() {
+		return posts;
 	}
 
 	public Long getId() {
@@ -33,13 +36,15 @@ public class Tag {
 		return tagLabel;
 	}
 
-	public Collection<Post> getPosts() {
-		return posts;
+	public String getPostTags() {
+		return tagLabel;
 	}
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", tagLabel=" + tagLabel + ", products=" + posts + "]";
+		return "Tag [id=" + id + ", postTags=" + tagLabel + "]";
 	}
+	
+	
 
 }

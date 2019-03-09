@@ -13,21 +13,19 @@ public class Category {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-
-	@OneToMany(mappedBy="category")
+	private String categoryName;
+	@OneToMany(mappedBy = "category")
 	private Collection<Post> posts;
-	
+
 	public Category() {
 	}
 
-	public Category(String name) {
-		this.name = name;
+	public Category(String categoryName) {
+		this.categoryName = categoryName;
 	}
-	
-	public Collection<Post> getPosts(){
+
+	public Collection<Post> getPosts() {
 		return posts;
-		
 	}
 
 	public Long getId() {
@@ -35,17 +33,12 @@ public class Category {
 	}
 
 	public String getCategoryName() {
-		return name;
+		return categoryName;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", categoryName=" + name + ", posts=" + posts + "]";
+		return "Category [id=" + id + ", categoryName=" + categoryName + "]";
 	}
 
-	
-	
-	
-	
-	
 }

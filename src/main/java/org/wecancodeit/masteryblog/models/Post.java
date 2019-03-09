@@ -10,6 +10,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Post {
 
@@ -20,29 +21,24 @@ public class Post {
 	private int year;
 	@Lob
 	private String body;
-	private String imgUrl;
 
 	@ManyToOne
 	private Category category;
-
+	
+	@ManyToOne
+	private Author author;
+	
 	@ManyToMany
 	private Collection<Tag> tags;
 
-	@ManyToOne
-	private Author author;
+	public Post() {}
 
-	public Post() {
-	}
-
-	public Post(String title, int year, String body, String imgUrl, Category category, Author author, Tag ...tags) {
-
+	public Post(String title, Category category, int year, String body, Tag ...tags) {
 		this.title = title;
+		this.category = category;
 		this.year = year;
 		this.body = body;
-		this.imgUrl = imgUrl;
-		this.category = category;
 		this.tags = Arrays.asList(tags);
-		this.author = author;
 	}
 
 	public Long getId() {
@@ -61,30 +57,32 @@ public class Post {
 		return body;
 	}
 
-	public String getImgUrl() {
-		return imgUrl;
-	}
-
 	public Category getCategory() {
 		return category;
+	}
+
+	public Author getAuthors() {
+		return author;
 	}
 
 	public Collection<Tag> getTags() {
 		return tags;
 	}
 
-	public Author getAuthor() {
-		return author;
-	}
-
 	public void addTagToTags(Tag tag) {
 		tags.add(tag);
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", year=" + year + ", body=" + body + ", imgUrl=" + imgUrl
-				+ ", category=" + category + ", tags=" + tags + ", author=" + author + "]";
+		return "Post [id=" + id + ", title=" + title + ", year=" + year + ", body=" + body + ", category=" + category
+				+ ", author=" + author + ", tags=" + tags + "]";
 	}
+	
+	
+
+
+	
+	
 
 }

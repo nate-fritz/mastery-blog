@@ -13,8 +13,8 @@ import org.wecancodeit.masteryblog.repositories.PostRepository;
 import org.wecancodeit.masteryblog.repositories.TagRepository;
 
 @Controller
-@RequestMapping("/authors")
-public class AuthorController {
+@RequestMapping("/category")
+public class CategoryController {
 
 	@Resource
 	PostRepository postRepo;
@@ -27,22 +27,17 @@ public class AuthorController {
 
 	@Resource
 	AuthorRepository authorRepo;
-	
-	@GetMapping("/add")
-	public String getAuthors(Model model) {
-		model.addAttribute("authors", authorRepo.findAll());
-		model.addAttribute("categories", categoryRepo.findAll());
-		return "add";
-	}
 
+	@GetMapping("")
+	public String displayCategory(Model model) {
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "/category";
+	}
 	
 	@GetMapping("/{id}")
-	public String getAuthor(@PathVariable Long id, Model model) {
-		model.addAttribute("author", authorRepo.findById(id).get());
-		model.addAttribute("allPosts", postRepo.findAll());
-		return "author";
+	public String displaySingleCategory (@PathVariable Long id, Model model) {
+		model.addAttribute("category", categoryRepo.findById(id).get());
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "category";
 	}
-	
-		
-	
 }
