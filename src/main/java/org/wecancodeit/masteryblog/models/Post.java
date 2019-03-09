@@ -31,6 +31,7 @@ public class Post {
 	@ManyToMany
 	private Collection<Tag> tags;
 
+
 	public Post() {}
 
 	public Post(String title, Category category, int year, String body, Tag ...tags) {
@@ -38,6 +39,7 @@ public class Post {
 		this.category = category;
 		this.year = year;
 		this.body = body;
+
 		this.tags = Arrays.asList(tags);
 	}
 
