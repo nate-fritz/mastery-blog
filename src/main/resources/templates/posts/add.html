@@ -52,15 +52,17 @@
     <div class="container">
         <ul>
             <li th:each="post : ${posts}">
-                <span th:text="|${post.name}, ${post.year}, ${post.price}, ${post.publisher}, ${post.content}|">Default value</span>
+                <span th:text="|${post.title}, ${post.author}, ${post.year}, ${post.category}, ${post.tag}, ${post.body}, ${post.imgUrl}|">Default value</span>
             </li>
         </ul>
         <form action="/posts/add" method="POST">
-            <span>Name:</span><input type="text" name="name" />
+            <span>Title:</span><input type="text" name="title" />
+            <span>Author:</span><input type="text" name="author" />
             <span>Year:</span><input type="text" name="year" />
-            <span>Price:</span><input type="text" name="price" />
-            <span>Publisher:</span><input type="text" name="publisher" />
-            <span>Post comments:</span><input type="text" name="content" />
+            <span>Category:</span><input type="text" name="category" />
+            <span>Tag:</span><input type="text" name="tag" />
+            <span>Body:</span><input type="text" name="body" />
+            <span>Image URL:</span><input type="text" name="imgUrl" />
             <!-- input type="submit" value="Submit" /-->
             <button type="submit">Submit</button>
         </form>

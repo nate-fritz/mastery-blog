@@ -1,6 +1,5 @@
 package org.wecancodeit.masteryblog.models;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -14,7 +13,7 @@ public class Category {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String categoryName;
+	private String name;
 
 	@OneToMany
 	private Collection<Post> posts;
@@ -23,7 +22,7 @@ public class Category {
 	}
 
 	public Category(String name) {
-		this.categoryName = name;
+		this.name = name;
 	}
 	
 	public Collection<Post> getPosts(){
@@ -36,12 +35,12 @@ public class Category {
 	}
 
 	public String getCategoryName() {
-		return categoryName;
+		return name;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", categoryName=" + categoryName + ", posts=" + posts + "]";
+		return "Category [id=" + id + ", categoryName=" + name + ", posts=" + posts + "]";
 	}
 
 	

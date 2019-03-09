@@ -34,10 +34,8 @@ public class Post {
 	public Post() {
 	}
 
-
-
 	public Post(String title, int year, String body, String imgUrl, Category category, Author author, Tag ...tags) {
-	
+
 		this.title = title;
 		this.year = year;
 		this.body = body;
@@ -46,8 +44,6 @@ public class Post {
 		this.tags = Arrays.asList(tags);
 		this.author = author;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -81,20 +77,14 @@ public class Post {
 		return author;
 	}
 
-	public void addTagToTags(Tag tag) {
-		tags.add(tag);
-	}
-
+//	public void addTagToTags(Tag tag) {
+//		tags.add(tag);
+//	}
 
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", title=" + title + ", year=" + year + ", body=" + body + ", imgUrl=" + imgUrl
 				+ ", category=" + category + ", tags=" + tags + ", author=" + author + "]";
 	}
-
-
-
-
-	
 
 }

@@ -1,11 +1,13 @@
 package org.wecancodeit.masteryblog.models;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Tag {
@@ -21,8 +23,9 @@ public class Tag {
 	public Tag() {
 	}
 
-	public Tag(String tagLabel) {
+	public Tag(String tagLabel, Post ...posts) {
 		this.tagLabel = tagLabel;
+		this.posts = Arrays.asList(posts);
 	}
 
 	public Long getId() {
@@ -36,14 +39,12 @@ public class Tag {
 	public Collection<Post> getProducts() {
 		return posts;
 	}
-	
+
 	public void addTagToPosts(Tag tag) {
 		tag.add(tag);
 	}
 
 	private void add(Tag tag) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

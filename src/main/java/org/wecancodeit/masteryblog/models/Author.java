@@ -21,10 +21,8 @@ public class Author {
 	public Author() {
 	}
 
-	public Author(String name, Collection<Post> posts) {
-		super();
+	public Author(String name) {
 		this.name = name;
-		this.posts = posts;
 	}
 
 	public Long getId() {
