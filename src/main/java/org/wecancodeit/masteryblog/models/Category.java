@@ -15,7 +15,7 @@ public class Category {
 	private Long id;
 	private String name;
 
-	@OneToMany
+	@OneToMany(mappedBy="category")
 	private Collection<Post> posts;
 	
 	public Category() {
