@@ -7,4 +7,5 @@ import org.wecancodeit.masteryblog.models.Category;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
+	Category findByCategoryName(String categoryName);
 }

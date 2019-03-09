@@ -6,10 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.masteryblog.models.Author;
 import org.wecancodeit.masteryblog.models.Category;
+import org.wecancodeit.masteryblog.models.Post;
 import org.wecancodeit.masteryblog.models.Tag;
 import org.wecancodeit.masteryblog.repositories.AuthorRepository;
 import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
+//import org.wecancodeit.masteryblog.repositories.TagRepository;
 import org.wecancodeit.masteryblog.repositories.TagRepository;
 
 @Service
@@ -36,6 +38,8 @@ public class Initializer implements CommandLineRunner {
 		Category testCategory = categoryRepo.save(new Category("Test Category"));
 		
 		Author testAuthor = authorRepo.save(new Author("Test Author"));
+		
+//		Post testPost = postRepo.save(new Post("String title", 2019, "String body"));
 
 	}	
 
