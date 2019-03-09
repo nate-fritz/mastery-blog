@@ -77,9 +77,9 @@ public class Post {
 		return author;
 	}
 
-//	public void addTagToTags(Tag tag) {
-//		tags.add(tag);
-//	}
+	public void addTagToTags(Tag tag) {
+		tags.add(tag);
+	}
 
 	@Override
 	public String toString() {
