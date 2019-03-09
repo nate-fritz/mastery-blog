@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.wecancodeit.masteryblog.models.Author;
-import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.models.Post;
 import org.wecancodeit.masteryblog.models.Tag;
+import org.wecancodeit.masteryblog.repositories.AuthorRepository;
+import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
 import org.wecancodeit.masteryblog.repositories.TagRepository;
 
@@ -23,30 +23,40 @@ public class PostController {
 	PostRepository postRepo;
 
 	@Resource
+	CategoryRepository categoryRepo;
+
+	@Resource
 	TagRepository tagRepo;
 
-	@GetMapping("")
-	public String getPostForm(Model model) {
-		model.addAttribute("posts", postRepo.findAll());
-		return "posts/add";
-	}
-	
-	@GetMapping("/all")
-	public String getPostsAll(String post, Model model) {
-		model.addAttribute("posts", postRepo.findAll());
-		return "/posts/all";
-	}
+	@Resource
+	AuthorRepository authorRepo;
 
 	@GetMapping("/{id}")
-	public String getPost(@PathVariable Long id, Model model) {
+	public String singlePost(@PathVariable Long id, Model model) {
 		model.addAttribute("post", postRepo.findById(id).get());
-		return "/posts/item";
+		model.addAttribute("category", categoryRepo.findAll());
+		model.addAttribute("author", authorRepo.findAll());
+		return "post";
 	}
 
-	@PostMapping("/add")
-	public String addPost(String title, int year, String body, String imgUrl, Category category, 
-			Author author, Tag ...tags) {
-		postRepo.save(new Post(title,  year,  body,  imgUrl,  category,  author, tags));
-		return "redirect:/posts";
+	@PostMapping("/{id}")
+	public String submitTag(@PathVariable Long id, String tagLabel) {
+		Tag tagToAdd = tagRepo.findByTagLabel(tagLabel);
+		Post post = postRepo.findById(id).get();
+
+		if (tagToAdd == null) {
+			tagToAdd = tagRepo.save(new Tag(tagLabel));
+		}
+		post.addTagToTags(tagToAdd);
+		postRepo.save(post);
+		return "redirect:/post/" + id;
 	}
+	
+	@GetMapping("/allposts")
+	public String displayCategory(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "allposts";
+	}
+
 }

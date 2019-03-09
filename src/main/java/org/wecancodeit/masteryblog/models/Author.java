@@ -13,24 +13,23 @@ public class Author {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-
-	@OneToMany(mappedBy = "author")
+	private String authorName;
+	
+	@OneToMany
 	private Collection<Post> posts;
+		
+	public Author() {}
 
-	public Author() {
-	}
-
-	public Author(String name) {
-		this.name = name;
+	public Author(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getAuthorName() {
+		return authorName;
 	}
 
 	public Collection<Post> getPosts() {
@@ -39,12 +38,9 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", name=" + name + ", posts=" + posts + "]";
+		return "Author [authorName=" + authorName + ", posts=" + posts + "]";
 	}
-
-	public void addPostToPosts(Post post) {
-		posts.add(post);
-		
-	}
-
+	
+	
 }
+	

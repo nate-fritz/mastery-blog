@@ -52,18 +52,18 @@
     <div class="container">
         <ul>
             <li th:each="post : ${posts}">
-                <span th:text="|${post.title}, ${post.author}, ${post.year}, ${post.category}, ${post.tag}, ${post.body}, ${post.imgUrl}|">Default value</span>
+                <span th:text="|${post.title},  ${post.year}, ${post.body}|">Default value</span>
+                <span th:each="tag : ${post.tags}" th:text="${tag.name}"></span>
             </li>
         </ul>
         <form action="/posts/add" method="POST">
             <span>Title:</span><input type="text" name="title" />
-            <span>Author:</span><input type="text" name="author" />
             <span>Year:</span><input type="text" name="year" />
-            <span>Category:</span><input type="text" name="category" />
-            <span>Tag:</span><input type="text" name="tag" />
             <span>Body:</span><input type="text" name="body" />
-            <span>Image URL:</span><input type="text" name="imgUrl" />
-            <!-- input type="submit" value="Submit" /-->
+            <span>Tag:</span><input type="text" name="tag" />
+                <!-- <select name="tagId">
+                <option th:each="tag : ${allTags}" th:value="${tag.id}" th:text="${tag.name}"></option> -->
+                </select>
             <button type="submit">Submit</button>
         </form>
         <footer class="box footer">The Talk About It Group, © 2019</footer>
