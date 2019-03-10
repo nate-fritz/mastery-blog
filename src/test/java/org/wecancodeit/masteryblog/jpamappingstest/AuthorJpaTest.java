@@ -40,7 +40,7 @@ public class AuthorJpaTest {
 		Optional<Author> authorToFind = authorRepo.findById(authorId);
 		author = authorToFind.get();
 
-		assertThat(author.getName(), is("JJ"));
+		assertThat(author.getAuthorName(), is("JJ"));
 	}
 
 }

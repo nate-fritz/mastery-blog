@@ -12,9 +12,14 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.wecancodeit.masteryblog.models.Author;
+import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.models.Post;
+import org.wecancodeit.masteryblog.models.Tag;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
-
+import org.wecancodeit.masteryblog.repositories.TagRepository;
+import org.wecancodeit.masteryblog.repositories.AuthorRepository;
+import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -26,9 +31,21 @@ public class PostJpaTest {
 	@Resource 
 	private PostRepository postRepo;
 	
+	@Resource
+	private CategoryRepository categoryRepo;
+	
+	@Resource
+	private AuthorRepository authorRepo;
+	
+	@Resource
+	private TagRepository tagRepo;
+	
 	@Test
 	public void shouldSaveAndLoadPost() {
-		Post post = postRepo.save(new Post("Bootcamp", 10, "Once upon a time at WCCI", "wcci.com" ));
+		Category testCategory;
+		Author testAuthor = null;
+		Tag testTag;
+		Post post = postRepo.save(new Post("title", "body", "time", testCategory, testAuthor, testTag ));
 		
 		Long postId = post.getId();
 		
@@ -39,7 +56,7 @@ public class PostJpaTest {
 		Optional<Post> postToFind = postRepo.findById(postId);
 		post = postToFind.get();
 
-		assertThat(post.getTitle(), is("Bootcamp"));
+		assertThat(post.getTitle(), is("title"));
 	}
 
 }

@@ -50,7 +50,7 @@ public class PostControllerTest {
 		long postId = 1;
 		when(postRepo.findById(postId)).thenReturn(Optional.of(post));
 		
-		underTest.getPost(postId, model);
+		underTest.findOnePost(postId, model);
 		
 		verify(model).addAttribute("post", post);
 	}
