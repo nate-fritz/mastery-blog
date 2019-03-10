@@ -39,9 +39,11 @@ public class AuthorController {
 	@GetMapping("/{id}")
 	public String getAuthor(@PathVariable Long id, Model model) {
 		model.addAttribute("author", authorRepo.findById(id).get());
-		model.addAttribute("allPosts", postRepo.findAll());
+		model.addAttribute("allAuthors", authorRepo.findAll());
 		return "author";
 	}
+
+
 	
 		
 	

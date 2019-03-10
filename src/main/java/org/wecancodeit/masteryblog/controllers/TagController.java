@@ -28,7 +28,7 @@ public class TagController {
 
 	@GetMapping ("/tag/{id}")
 	public String singleTag(@PathVariable Long id, Model model) {
-		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("tags", tagRepo.findAll());
 		model.addAttribute("tag", tagRepo.findById(id).get());
 		return "tag";
 	}

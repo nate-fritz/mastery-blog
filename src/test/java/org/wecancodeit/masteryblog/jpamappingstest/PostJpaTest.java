@@ -42,10 +42,10 @@ public class PostJpaTest {
 	
 	@Test
 	public void shouldSaveAndLoadPost() {
-		Category testCategory;
-		Author testAuthor = null;
-		Tag testTag;
-		Post post = postRepo.save(new Post("title", "body", "time", testCategory, testAuthor, testTag ));
+		Category testCategory = categoryRepo.save(new Category("category"));
+		Author testAuthor = authorRepo.save(new Author("author"));
+		Tag testTag = tagRepo.save(new Tag("tag"));
+		Post post = postRepo.save(new Post("title", "body", testCategory, testAuthor, testTag ));
 		
 		Long postId = post.getId();
 		

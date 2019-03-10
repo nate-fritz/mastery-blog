@@ -1,5 +1,6 @@
 package org.wecancodeit.masteryblog.models;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -17,7 +18,8 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	private String time;
+	private LocalDateTime dateTime;
+	
 	@Lob
 	private String body;
 
@@ -30,14 +32,16 @@ public class Post {
 	@ManyToMany
 	private Collection<Tag> tags;
 
+	
+			
 	public Post() {
 	}
 
-	public Post(String title, String body, String formatDateTime, Category category, Author author, Tag ...tags) {
+	public Post(String title, String body, Category category, Author author, Tag ...tags) {
         this.title = title;
         this.body = body;
         this.category= category;
-        this.time = formatDateTime;
+        this.dateTime= LocalDateTime.now();
         this.authors = Arrays.asList(author);
         this.tags = Arrays.asList(tags);
 	}
@@ -46,8 +50,12 @@ public class Post {
 		return title;
 	}
 
-	public String getTime() {
-		return time;
+	
+
+
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
 	}
 
 	public String getBody() {
