@@ -31,6 +31,15 @@ public class PostController {
 	@Resource
 	AuthorRepository authorRepo;
 
+	@GetMapping("")
+	public String post(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("authors", authorRepo.findAll());
+		model.addAttribute("tags", tagRepo.findAll());
+		return "posts/add";
+	}
+	
 	@GetMapping("/{id}")
 	public String singlePost(@PathVariable Long id, Model model) {
 		model.addAttribute("post", postRepo.findById(id).get());
@@ -39,6 +48,7 @@ public class PostController {
 		return "post";
 	}
 
+	
 	@PostMapping("/{id}")
 	public String submitTag(@PathVariable Long id, String tagLabel) {
 		Tag tagToAdd = tagRepo.findByTagLabel(tagLabel);
