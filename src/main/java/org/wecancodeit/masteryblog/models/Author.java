@@ -18,7 +18,7 @@ public class Author {
 	private Long id;
 	private String author;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="authors")
 	private Collection<Post> posts;
 		
 	public Author() {}
@@ -27,10 +27,10 @@ public class Author {
 		this.author = author;
 	}
 
-	public Author(String author, Collection<Post> post) {
-		this.author = author;
-		this.posts = post;
+	public Collection<Post> getPosts() {
+		return posts;
 	}
+	
 	
 	public Long getId() {
 		return id;
@@ -39,15 +39,17 @@ public class Author {
 	public String getAuthor() {
 		return author;
 	}
-
-	public Collection<Post> getPosts() {
-		return posts;
+	
+	
+	public void addPostsToAuthor(Collection<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override
 	public String toString() {
 		return "Author [id=" + id + ", author=" + author + ", posts=" + posts + "]";
 	}
+
 
 
 

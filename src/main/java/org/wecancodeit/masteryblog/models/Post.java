@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Arrays;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+
 
 
 @Entity
@@ -25,7 +28,7 @@ public class Post {
 	private String body;
 
 	@ManyToMany
-	private Collection<Author> author;
+	private Collection<Author> authors;
 
 	@ManyToOne
 	private Category category;
@@ -41,7 +44,7 @@ public class Post {
         this.body = body;
         this.category = category;
         this.time = LocalDateTime.now();
-        this.author = new ArrayList<>();
+        this.authors = Arrays.asList(author);
 
 	}
 
@@ -57,8 +60,8 @@ public class Post {
 		return body;
 	}
 
-	public Collection<Author> getAuthor() {
-		return author;
+	public Collection<Author> getAuthors() {
+		return authors;
 	}
 
 	public Category getCategory() {
@@ -81,10 +84,6 @@ public class Post {
 	}
 	
 
-	@Override
-	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", time=" + time + ", body=" + body + ", author=" + author
-				+ ", category=" + category + ", tags=" + tags + "]";
-	}
+
 
 }
