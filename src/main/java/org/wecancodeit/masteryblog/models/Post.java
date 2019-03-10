@@ -40,7 +40,7 @@ public class Post {
 	public Post(String title, String body, String time, Category category, Author author) {
         this.title = title;
         this.body = body;
-        this.category= category;
+        this.category = category;
         this.time = LocalDateTime.now();
         this.authors = Arrays.asList(author);
 

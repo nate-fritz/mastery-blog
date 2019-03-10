@@ -56,7 +56,7 @@ public class CategoryController {
 
 	@PostMapping("/")
 	public String addCategory(String name) {
-		Category categoryToAdd = categoryRepo.findByCategoryName(name);
+		Category categoryToAdd = categoryRepo.findByCategory(name);
 		if (categoryToAdd == null) {
 			categoryToAdd = categoryRepo.save(new Category(name));
 		}

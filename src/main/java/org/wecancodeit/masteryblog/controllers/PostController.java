@@ -58,12 +58,10 @@ public class PostController {
 	
 //	Allows creation of new post on "Submit" button.
 	@PostMapping("/")
-	public String addPost(Model model, String title, String body, String time, String categoryName, String authorName) {
-		model.addAttribute(postRepo.findAll());
-		Category category = categoryRepo.findByCategoryName(categoryName);
+	public String addPost(Model model, String title, String body, String time, String category, String authorName) {
+		Category categoryForPost = categoryRepo.findByCategory(category);
 		Author author = authorRepo.findByAuthorName(authorName);
-		Post newPost = postRepo.save(new Post(title, body, time, category, author));
-		
+		Post newPost = postRepo.save(new Post(title, body, time, categoryForPost, author));
 		return "redirect:/posts/" + newPost.getId();
 	}
 	

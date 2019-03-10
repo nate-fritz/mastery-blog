@@ -42,6 +42,7 @@
         
         </div>
     </header>
+
     <div class="wrapper">
         <div class="box content">
           <h2>Write a New Post</h2>
@@ -51,8 +52,11 @@
               <li class="post__info__field">Title:</li>
               <li><input class="post__title" type="text" name="title" /></li>
               <li class="post__info__field">Category:</li>
-              <select name="categoryId">
-                <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option> 
+              <select name="category">
+                <option th:each="category : ${categories}" 
+                th:value="${category.category}" 
+                th:text="${category.category}">
+                </option> 
              </select>
               <!-- <li><input class="post__category" type="text" name="category" /></li> -->
               <li class="post__info__field">Author:</li>
@@ -77,7 +81,7 @@
             <li th:each="post : ${posts}">
                 <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
                 <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
-                <span th:each="category : ${post.category}" th:text="${category.categoryName}">Default Category</span>
+                <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
                 <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
             
             </li>
