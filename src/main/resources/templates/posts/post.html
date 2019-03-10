@@ -48,7 +48,7 @@
                     <ul>
                 <li th:each="post : ${posts}">
                     <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
-                    <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
+                    <span th:each="author : ${post.author}" th:text="${author.author}">Default Author</span>
                     <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
                     <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
                 

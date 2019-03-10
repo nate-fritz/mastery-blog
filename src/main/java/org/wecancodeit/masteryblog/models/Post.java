@@ -2,7 +2,6 @@ package org.wecancodeit.masteryblog.models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class Post {
 	private String body;
 
 	@ManyToMany
-	private Collection<Author> authors;
+	private Collection<Author> author;
 
 	@ManyToOne
 	private Category category;
@@ -42,7 +41,7 @@ public class Post {
         this.body = body;
         this.category = category;
         this.time = LocalDateTime.now();
-        this.authors = Arrays.asList(author);
+        this.author = new ArrayList<>();
 
 	}
 
@@ -58,8 +57,8 @@ public class Post {
 		return body;
 	}
 
-	public Collection<Author> getAuthors() {
-		return authors;
+	public Collection<Author> getAuthor() {
+		return author;
 	}
 
 	public Category getCategory() {
@@ -81,15 +80,10 @@ public class Post {
 		return id;
 	}
 	
-	public void addAuthorToAuthors(Author author) {
-		ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());
-		authors.add(author);
-		this.authors = authors;
-	}
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", time=" + time + ", body=" + body + ", authors=" + authors
+		return "Post [id=" + id + ", title=" + title + ", time=" + time + ", body=" + body + ", author=" + author
 				+ ", category=" + category + ", tags=" + tags + "]";
 	}
 

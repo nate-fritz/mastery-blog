@@ -66,6 +66,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-items: space-between;
+  padding: .5rem;
 }
 
 header ul {
@@ -359,7 +360,7 @@ header ul {
 @media only screen and (min-width: 951px) {
   .wrapper {
     grid-row-gap: 1rem;
-    grid-template-columns: 20% auto 20%;
+    grid-template-columns: 30% auto 30%;
     grid-template-areas:
     "viewport viewport viewport"
     ". content ."

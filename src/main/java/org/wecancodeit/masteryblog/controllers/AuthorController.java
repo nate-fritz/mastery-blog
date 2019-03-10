@@ -56,7 +56,7 @@ public class AuthorController {
 
 	@PostMapping("/")
 	public String addAuthor(String name) {
-		Author authorToAdd = authorRepo.findByAuthorName(name);
+		Author authorToAdd = authorRepo.findByAuthor(name);
 		if (authorToAdd == null) {
 			authorToAdd = authorRepo.save(new Author(name));
 		}

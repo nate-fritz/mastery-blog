@@ -58,10 +58,9 @@
                 th:text="${category.category}">
                 </option> 
              </select>
-              <!-- <li><input class="post__category" type="text" name="category" /></li> -->
               <li class="post__info__field">Author:</li>
-              <select name="authorId">
-                <option th:each="author : ${authors}" th:value="${author.authorId}" th:text="${author.authorName}"></option> 
+              <select name="author">
+                <option th:each="author : ${authors}" th:value="${author.author}" th:text="${author.author}"></option> 
              </select>
               <!-- <li><input class="post__tags" type="text" name="author" /></li> -->
               <li class="post__info__field">Body:</li>
@@ -80,7 +79,7 @@
                 <ul>
             <li th:each="post : ${posts}">
                 <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
-                <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
+                <span th:each="author : ${post.author}" th:text="${author.author}">Default Author</span>
                 <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
                 <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
             

@@ -1,36 +1,43 @@
 package org.wecancodeit.masteryblog.models;
 
+
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Author {
 
 	@Id
 	@GeneratedValue
-	private Long authorId;
-	private String authorName;
+	private Long id;
+	private String author;
 	
-	@ManyToMany (mappedBy= "authors")
+	@ManyToMany
 	private Collection<Post> posts;
 		
 	public Author() {}
 
-	public Author(String authorName) {
-		this.authorName = authorName;
+	public Author(String author) {
+		this.author = author;
 	}
 
-	public Long getAuthorId() {
-		return authorId;
+	public Author(String author, Collection<Post> post) {
+		this.author = author;
+		this.posts = post;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
-	public String getAuthorName() {
-		return authorName;
+	public String getAuthor() {
+		return author;
 	}
 
 	public Collection<Post> getPosts() {
@@ -39,8 +46,9 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [authorId=" + authorId + ", authorName=" + authorName + ", posts=" + posts + "]";
+		return "Author [id=" + id + ", author=" + author + ", posts=" + posts + "]";
 	}
+
 
 
 	
