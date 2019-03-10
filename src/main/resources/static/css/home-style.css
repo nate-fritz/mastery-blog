@@ -54,17 +54,18 @@ header {
 }
 
 .header__logo {
-  height: 100%;
+  height: 95%;
   width: auto;
   margin: 2px;
-  max-height: 80px;
-  margin-bottom: -10px;
+  max-height: 4rem;
+  margin-bottom: -0.5rem;
 }
 
 .navbar {
   display: flex;
   flex-direction: row;
   justify-items: space-between;
+  padding: .5rem;
 }
 
 header ul {
@@ -315,7 +316,7 @@ header ul {
 .wrapper {
   background-color: white;
   color: black;
-  padding-top: 120px;
+  padding-top: 4rem;
   display: grid;
   grid-row-gap: 1rem;
   grid-template-areas:
@@ -354,7 +355,7 @@ header ul {
 /* (5) Media Queries */
 @media only screen and (min-width: 500px) {
   .wrapper {
-    padding-top: 100px;
+    padding-top: 4rem;
     grid-template-columns: 30% auto;
     grid-template-areas:
     "viewport viewport"
@@ -429,6 +430,7 @@ header ul {
   margin-bottom: 4rem;
   height: 90%;
   padding-right: 2rem;
+  padding-top: 1rem;
 }
 
 
@@ -460,4 +462,5 @@ header ul {
   left: 0;
   bottom: 0;
   width: 100%;
+  font-size: 1rem;
 }

@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/home-style.css">
-    <title>Talk About It - A blog site for the people</title>
+    <link rel="stylesheet" href="../css/posts-add-style.css">
+    <title>Talk About It! - Post</title>
 </head>
-
 <body>
     <header>
         <ul class="navbar">
@@ -41,20 +40,22 @@
         
         </div>
     </header>
-
-    <div class="wrapper">
-            <div class="viewport"><img class="main__logo" src="../img/logo-transparent-background.png">
-      </div>
+          
+        <div class="wrapper">
             <div class="box content">
-              <h2>Content 1</h2>
-              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p></div><!--box content-->
-             <div class="box content2">
-               <h2>Content 2</h2>              
-               <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p></div><!--box content2-->
-            <div class="box content3">
-              <h2>Content 3</h2>
-              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p> </div><!--box content3-->
+                <h2>Write a New Post</h2>
+                <fieldset class ="post__box">        
+                    <ul>
+                <li th:each="post : ${posts}">
+                    <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
+                    <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
+                    <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
+                    <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
+                
+                </li>
+            </ul>
+        </fieldset>
             <footer class="box footer">The Talk About It Group, © 2019</footer>
-    </div><!--wrapper-->
+        </div><!--wrapper-->
 </body>
 </html>

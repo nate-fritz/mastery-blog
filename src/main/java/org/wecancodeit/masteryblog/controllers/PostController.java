@@ -1,5 +1,7 @@
 package org.wecancodeit.masteryblog.controllers;
 
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -8,8 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.masteryblog.models.Author;
+import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.models.Post;
-import org.wecancodeit.masteryblog.models.Tag;
 import org.wecancodeit.masteryblog.repositories.AuthorRepository;
 import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
@@ -31,8 +34,21 @@ public class PostController {
 	@Resource
 	AuthorRepository authorRepo;
 
-	@GetMapping("")
-	public String post(Model model) {
+	@GetMapping("/{id}")
+	public String getPost(@PathVariable Long id, Model model) throws Exception {
+		Optional<Post> post = postRepo.findById(id);
+		if(post.isPresent()) {
+			model.addAttribute("posts", post.get());
+		} else {
+			throw new Exception("Post not found");
+		}
+		return "posts/post";
+		
+	}
+	
+//	Allows linking to posts/add page
+	@GetMapping("/")
+	public String getAllPosts(Model model) {
 		model.addAttribute("posts", postRepo.findAll());
 		model.addAttribute("categories", categoryRepo.findAll());
 		model.addAttribute("authors", authorRepo.findAll());
@@ -40,34 +56,15 @@ public class PostController {
 		return "posts/add";
 	}
 	
-	@GetMapping("/{id}")
-	public String singlePost(@PathVariable Long id, Model model) {
-		model.addAttribute("post", postRepo.findById(id).get());
-		model.addAttribute("category", categoryRepo.findAll());
-		model.addAttribute("author", authorRepo.findAll());
-		return "post";
-	}
-
-	
-	@PostMapping("/{id}")
-	public String submitTag(@PathVariable Long id, String tagLabel) {
-		Tag tagToAdd = tagRepo.findByTagLabel(tagLabel);
-		Post post = postRepo.findById(id).get();
-
-		if (tagToAdd == null) {
-			tagToAdd = tagRepo.save(new Tag(tagLabel));
-		}
-		post.addTagToTags(tagToAdd);
-		postRepo.save(post);
-		return "redirect:/post/" + id;
+//	Allows creation of new post on "Submit" button.
+	@PostMapping("/")
+	public String addPost(Model model, String title, String body, String time, String category, String authorName) {
+		Category categoryForPost = categoryRepo.findByCategory(category);
+		Author author = authorRepo.findByAuthorName(authorName);
+		Post newPost = postRepo.save(new Post(title, body, time, categoryForPost, author));
+		return "redirect:/posts/" + newPost.getId();
 	}
 	
-	@GetMapping("/allposts")
-	public String displayCategory(Model model) {
-		model.addAttribute("posts", postRepo.findAll());
-		model.addAttribute("categories", categoryRepo.findAll());
-		return "allposts";
-	}
-
+	
 }
 

@@ -35,10 +35,13 @@ public class Initializer implements CommandLineRunner {
 		Tag epic = tagRepo.save(new Tag("epic"));
 		
 		Category testCategory = categoryRepo.save(new Category("Test Category"));
+		Category testCategory2 = categoryRepo.save(new Category("Test Category 2"));
 		
 		Author testAuthor = authorRepo.save(new Author("Test Author"));
+		Author testAuthor2 = authorRepo.save(new Author("Test Author2"));
 		
-		Post testPost = postRepo.save(new Post("String title", "String body", "2019", testCategory, testAuthor,   sad));
+		Post testPost = postRepo.save(new Post("String title", "String body", "2019", testCategory, testAuthor));
+		Post testPost2 = postRepo.save(new Post("String title2", "String body2", "2020", testCategory2, testAuthor2));
 
 	}	
 
