@@ -36,31 +36,31 @@ public class TagController {
 	public String getTag(@PathVariable Long id, Model model) throws Exception {
 		Optional<Tag> tag = tagRepo.findById(id);
 		if (tag.isPresent()) {
-			model.addAttribute("tag", tag.get());
+			model.addAttribute("tags", tag.get());
 		} else {
 			throw new Exception("Tag not found.");
 		}
 
 		return "tags/tag";
-}
-
-@GetMapping("/")
-public String getAllTags(Model model) {
-	model.addAttribute("tags", tagRepo.findAll());
-	return "tags/tags";
-	
-	
-}
-
-@PostMapping("/")
-public String addTag(String name) {
-	Tag tagToAdd = tagRepo.findByTagLabel(name);
-	if (tagToAdd == null) {
-		tagToAdd = tagRepo.save(new Tag(name));
 	}
 	
-	return "redirect:/tags/";
+	@GetMapping("/")
+	public String getAllTags(Model model) {
+		model.addAttribute("tags", tagRepo.findAll());
+		return "tags/tags";
+		
+		
+	}
 	
-}
+	@PostMapping("/")
+	public String addTag(String name) {
+		Tag tagToAdd = tagRepo.findByTagLabel(name);
+		if (tagToAdd == null) {
+			tagToAdd = tagRepo.save(new Tag(name));
+		}
+		
+		return "redirect:/tags/";
+		
+	}
 }
 

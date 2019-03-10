@@ -37,13 +37,13 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(String title, String body, String time, Category category, Author author, Tag tag) {
+	public Post(String title, String body, String time, Category category, Author author) {
         this.title = title;
         this.body = body;
         this.category= category;
         this.time = LocalDateTime.now();
         this.authors = Arrays.asList(author);
-        this.tags = Arrays.asList(tag);
+
 	}
 
 	public String getTitle() {

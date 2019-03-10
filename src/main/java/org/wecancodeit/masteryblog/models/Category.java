@@ -1,5 +1,6 @@
 package org.wecancodeit.masteryblog.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ public class Category {
 	private String categoryName;
 	
 	@OneToMany (mappedBy= "category")
-	private Collection<Post> posts;
+	private Collection<Post> post = new ArrayList<Post>();
 
 	public Category() {
 	}
@@ -25,8 +26,8 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
-	public Collection<Post> getPosts() {
-		return posts;
+	public Collection<Post> getPost() {
+		return post;
 	}
 
 	public Long getCategoryId() {
@@ -37,10 +38,10 @@ public class Category {
 		return categoryName;
 	}
 
-	@Override
-	public String toString() {
-		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", posts=" + posts + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", post=" + post + "]";
+//	}
 
 
 

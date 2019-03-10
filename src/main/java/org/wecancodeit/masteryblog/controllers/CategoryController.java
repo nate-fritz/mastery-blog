@@ -32,24 +32,12 @@ public class CategoryController {
 	@Resource
 	AuthorRepository authorRepo;
 
-//	@GetMapping("")
-//	public String displayCategory(Model model) {
-//		model.addAttribute("categories", categoryRepo.findAll());
-//		return "/category";
-//	}
-//	
-//	@GetMapping("/{id}")
-//	public String displaySingleCategory (@PathVariable Long id, Model model) {
-//		model.addAttribute("category", categoryRepo.findById(id).get());
-//		model.addAttribute("categories", categoryRepo.findAll());
-//		return "category";
-//	}
-	
+
 	@GetMapping("/category/{id}")
 	public String getCategory(@PathVariable Long id, Model model) throws Exception {
 	Optional<Category> category = categoryRepo.findById(id);	
 	if(category.isPresent()) {
-		model.addAttribute("category", category.get());
+		model.addAttribute("categories", category.get());
 	}
 	else {
 		throw new Exception("Category not found.");

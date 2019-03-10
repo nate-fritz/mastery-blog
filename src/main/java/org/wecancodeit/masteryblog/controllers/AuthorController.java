@@ -37,7 +37,7 @@ public class AuthorController {
 	public String getAuthor(@PathVariable Long id, Model model) throws Exception {
 		Optional<Author> author = authorRepo.findById(id);
 		if (author.isPresent()) {
-			model.addAttribute("author", author.get());
+			model.addAttribute("authors", author.get());
 		} else {
 			throw new Exception("Author not found.");
 		}
