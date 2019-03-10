@@ -38,7 +38,7 @@ public class Initializer implements CommandLineRunner {
 		
 		Author testAuthor = authorRepo.save(new Author("Test Author"));
 		
-		Post testPost = postRepo.save(new Post("String title", testCategory, 2019, "String body", sad));
+		Post testPost = postRepo.save(new Post("String title", "String body", "2019", testCategory, testAuthor,   sad));
 
 	}	
 

@@ -44,6 +44,11 @@ public class Tag {
 	public String toString() {
 		return "Tag [id=" + id + ", postTags=" + tagLabel + "]";
 	}
+
+	public void add(Tag tag) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

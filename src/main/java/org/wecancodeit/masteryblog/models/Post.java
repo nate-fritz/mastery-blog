@@ -10,7 +10,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 public class Post {
 
@@ -18,53 +17,49 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	private int year;
+	private String time;
 	@Lob
 	private String body;
 
+	@ManyToMany
+	private Collection<Author> authors;
+
 	@ManyToOne
 	private Category category;
-	
-	@ManyToOne
-	private Author author;
-	
+
 	@ManyToMany
 	private Collection<Tag> tags;
 
-
-	public Post() {}
-
-	public Post(String title, Category category, int year, String body, Tag ...tags) {
-		this.title = title;
-		this.category = category;
-		this.year = year;
-		this.body = body;
-
-		this.tags = Arrays.asList(tags);
+	public Post() {
 	}
 
-	public Long getId() {
-		return id;
+	public Post(String title, String body, String formatDateTime, Category category, Author author, Tag ...tags) {
+        this.title = title;
+        this.body = body;
+        this.category= category;
+        this.time = formatDateTime;
+        this.authors = Arrays.asList(author);
+        this.tags = Arrays.asList(tags);
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public int getYear() {
-		return year;
+	public String getTime() {
+		return time;
 	}
 
 	public String getBody() {
 		return body;
 	}
 
-	public Category getCategory() {
-		return category;
+	public Collection<Author> getAuthors() {
+		return authors;
 	}
 
-	public Author getAuthors() {
-		return author;
+	public Category getCategory() {
+		return category;
 	}
 
 	public Collection<Tag> getTags() {
@@ -72,19 +67,13 @@ public class Post {
 	}
 
 	public void addTagToTags(Tag tag) {
-		tags.add(tag);
+		tag.add(tag);
+		
 	}
+
+	public Long getId() {
 	
-	@Override
-	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", year=" + year + ", body=" + body + ", category=" + category
-				+ ", author=" + author + ", tags=" + tags + "]";
+		return id;
 	}
-	
-	
-
-
-	
-	
 
 }
