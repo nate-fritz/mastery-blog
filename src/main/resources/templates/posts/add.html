@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/header-style.css">
-    <link rel="stylesheet" href="../css/home-style.css">
+    <link rel="stylesheet" href="../css/posts-add-style.css">
     <title>Talk About It - Add New Post</title>
 </head>
 
@@ -42,31 +42,39 @@
         
         </div>
     </header>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <ul>
-            <li th:each="post : ${posts}">
-                <span th:text="|${post.title},  ${post.year}, ${post.body}|">Default value</span>
-                <span th:each="tag : ${post.tags}" th:text="${tag.name}"></span>
-            </li>
-        </ul>
-        <form action="/posts/add" method="POST">
-            <span>Title:</span><input type="text" name="title" />
-            <span>Year:</span><input type="text" name="year" />
-            <span>Body:</span><input type="text" name="body" />
-            <span>Tag:</span><input type="text" name="tag" />
+    <div class="wrapper">
+        <div class="box content">
+          <h2>Write a New Post</h2>
+          <fieldset class ="post__add__form">        
+          <form action="/posts/add" method="POST">
+            <ul>
+              <li class="post__info__field">Title:</li>
+              <li><input class="post__title" type="text" name="title" /></li>
+              <li class="post__info__field">Year:</li>
+              <li><input class="post__year" type="text" name="year" /></li>
+              <li class="post__info__field">Tag:</li>
+              <li><input class="post__tags" type="text" name="tag" /></li>
+              <li class="post__info__field">Body:</li>
+              <li><input class="post__body" type="text" name="body"/></li>
+
                 <!-- <select name="tagId">
                 <option th:each="tag : ${allTags}" th:value="${tag.id}" th:text="${tag.name}"></option> -->
-                </select>
-            <button type="submit">Submit</button>
+<!--                 </select> -->
+                
+            </ul>
+                        <button class = "post__add__button" type="submit">Submit</button>
         </form>
+            
+          </fieldset>
+      
+                <ul>
+            <!-- <li th:each="post : ${posts}">
+                <span th:text="|${post.title},  ${post.year}, ${post.body}|">Default value</span>
+                <span th:each="tag : ${post.tags}" th:text="${tag.name}"></span> -->
+            </li>
+        </ul>
         <footer class="box footer">The Talk About It Group, © 2019</footer>
-    </div><!--container-->
+    </div><!--wrapper-->
+
 </body>
 </html>
