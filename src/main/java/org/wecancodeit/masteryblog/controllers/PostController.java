@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblog.models.Author;
 import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.models.Post;
+import org.wecancodeit.masteryblog.models.Tag;
 import org.wecancodeit.masteryblog.repositories.AuthorRepository;
 import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
@@ -58,10 +59,11 @@ public class PostController {
 	
 //	Allows creation of new post on "Submit" button.
 	@PostMapping("/")
-	public String addPost(Model model, String title, String body, String time, String category, String author) {
+	public String addPost(Model model, String title, String body, String time, String category, String author, String tags) {
 		Category categoryForPost = categoryRepo.findByCategory(category);
 		Author authorForPost = authorRepo.findByAuthor(author);
-		Post newPost = postRepo.save(new Post(title, body, time, categoryForPost, authorForPost));
+		Tag tagsForPost = tagRepo.findByTagLabel(tags);
+		Post newPost = postRepo.save(new Post(title, body, time, categoryForPost, authorForPost, tagsForPost));
 		return "redirect:/posts/" + newPost.getId();
 	}
 	

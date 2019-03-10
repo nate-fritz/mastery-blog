@@ -1,10 +1,9 @@
 package org.wecancodeit.masteryblog.models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Arrays;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,12 +38,13 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(String title, String body, String time, Category category, Author author) {
+	public Post(String title, String body, String time, Category category, Author author, Tag ...tags) {
         this.title = title;
         this.body = body;
         this.category = category;
         this.time = LocalDateTime.now();
         this.authors = Arrays.asList(author);
+        this.tags = Arrays.asList(tags);
 
 	}
 
@@ -70,13 +70,6 @@ public class Post {
 
 	public Collection<Tag> getTags() {
 		return tags;
-	}
-
-	public void addTagToTags(Tag tag) {
-		ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
-		tags.add(tag);
-		this.tags = tags;
-		
 	}
 
 	public Long getId() {

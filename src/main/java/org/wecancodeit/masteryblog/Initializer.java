@@ -30,18 +30,23 @@ public class Initializer implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Tag funny = tagRepo.save(new Tag("funny"));
-		Tag sad = tagRepo.save(new Tag("sad"));
-		Tag epic = tagRepo.save(new Tag("epic"));
+		Tag funny = tagRepo.save(new Tag("Funny"));
+		Tag sad = tagRepo.save(new Tag("Sad"));
+		Tag epic = tagRepo.save(new Tag("Epic"));
+		Tag helpful = tagRepo.save(new Tag("Helpful"));
+		Tag unhelpful = tagRepo.save(new Tag("Unhelpful"));
 		
-		Category testCategory = categoryRepo.save(new Category("Test Category"));
-		Category testCategory2 = categoryRepo.save(new Category("Test Category 2"));
 		
-		Author testAuthor = authorRepo.save(new Author("Test Author"));
-		Author testAuthor2 = authorRepo.save(new Author("Test Author2"));
+		Category comics = categoryRepo.save(new Category("Comics"));
+		Category movies = categoryRepo.save(new Category("Movies"));
+		Category videoGames = categoryRepo.save(new Category("Video Games"));
+		Category fishing = categoryRepo.save(new Category("Fishing"));
 		
-		Post testPost = postRepo.save(new Post("String title", "String body", "2019", testCategory, testAuthor));
-		Post testPost2 = postRepo.save(new Post("String title2", "String body2", "2020", testCategory2, testAuthor2));
+		Author jimJewell = authorRepo.save(new Author("Jim Jewell"));
+		Author nateFritz = authorRepo.save(new Author("Nate Fritz"));
+		
+		Post testPost = postRepo.save(new Post("Black Ops 4", "I had to download this on PC because my son is always on the Xbox.  Last I checked, it was still downloading.", "Time", videoGames, jimJewell, funny, sad, epic));
+		Post testPost2 = postRepo.save(new Post("Secret Warriors Omnibus Review", "This omnibus is worth every penny.  Collects the entire Secret Warriors run and tie-ins, with a plot that is more of a spy/thriller story than Marvel's typical super-hero stuff.  Highly recommend.", "Time", comics, nateFritz, epic));
 
 	}	
 

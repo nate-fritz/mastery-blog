@@ -432,6 +432,7 @@ header ul {
 
 .post__body {
   padding-bottom: 30%;
+  word-wrap: normal;
 }
 
 .post__add__button {
