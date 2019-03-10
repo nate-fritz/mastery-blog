@@ -58,19 +58,15 @@
                 th:text="${category.category}">
                 </option> 
              </select>
-              <!-- <li><input class="post__category" type="text" name="category" /></li> -->
               <li class="post__info__field">Author:</li>
-              <select name="authorId">
-                <option th:each="author : ${authors}" th:value="${author.authorId}" th:text="${author.authorName}"></option> 
+              <select name="author">
+                <option th:each="author : ${authors}" th:value="${author.author}" th:text="${author.author}"></option> 
              </select>
               <!-- <li><input class="post__tags" type="text" name="author" /></li> -->
               <li class="post__info__field">Body:</li>
-              <li><input class="post__body" type="textarea" name="body"/></li>
-              <li class="post__info__field">Tag:</li>
-              <select name="tagId">
-                <option th:each="tag : ${tags}" th:value="${tag.tagLabel}" th:text="${tag.tagLabel}"></option> 
-             </select>
-                
+              <li><textarea class="post__body" wrap="hard" name="body"></textarea></li>
+              <li class="post__info__field">Tags:</li>
+              <input class="tag__selection" name="tags" type="checkbox" th:each="tag : ${tags}" th:value="${tag.tagLabel}" th:text="${tag.tagLabel}">
             </ul>
                 <button class = "post__add__button" type="submit">Submit</button>
         </form>
@@ -80,14 +76,12 @@
                 <ul>
             <li th:each="post : ${posts}">
                 <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
-                <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
+                <span th:each="author : ${post.authors}" th:text="${author.author}">Default Author</span>
                 <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
                 <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
-            
             </li>
         </ul>
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->
-
 </body>
 </html>

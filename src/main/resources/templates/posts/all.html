@@ -45,12 +45,22 @@
     <div class="wrapper">
             <div class="box content">
               <h2>All Items</h2>
-              <li th:each="post : ${posts}">
-                <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
-                <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
-                <span th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
-                <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
-            </li>
+              <ul>
+                <li th:each="post : ${posts}">
+                    <div class="post__info">
+                    <span>Post Title: </span>
+                    <span class="post__info__field" th:text="|${post.name}|">Default value</span>
+                    <span>Author: </span>
+                    <span class="post__info__field" th:text="|${post.publisher}|">Default value</span>
+                    <span>Category: </span>
+                    <span class="post__info__field" th:text="|${post.price}|">Default value</span>
+                    <span>Date: </span>
+                    <span class="post__info__field" th:text="|${post.year}|">Default value</span>
+                    <span>Body: </span>
+                    <span class="post__info__field" th:text="|${post.content}|">Default value</span>
+                    </div>
+                </li>
+            </ul>
         </div><!--box content-->
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->
