@@ -1,7 +1,10 @@
 package org.wecancodeit.masteryblog.models;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Post {
 
@@ -17,7 +21,7 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	private String time;
+	private LocalDateTime time;
 	@Lob
 	private String body;
 
@@ -28,25 +32,25 @@ public class Post {
 	private Category category;
 
 	@ManyToMany
-	private Collection<Tag> tags;
+	private List<Tag> tags;
 
 	public Post() {
 	}
 
-	public Post(String title, String body, String formatDateTime, Category category, Author author, Tag ...tags) {
+	public Post(String title, String body, String time, Category category, Author author, Tag tag) {
         this.title = title;
         this.body = body;
         this.category= category;
-        this.time = formatDateTime;
+        this.time = LocalDateTime.now();
         this.authors = Arrays.asList(author);
-        this.tags = Arrays.asList(tags);
+        this.tags = Arrays.asList(tag);
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public String getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
@@ -67,13 +71,26 @@ public class Post {
 	}
 
 	public void addTagToTags(Tag tag) {
-		tag.add(tag);
+		ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
+		tags.add(tag);
+		this.tags = tags;
 		
 	}
 
 	public Long getId() {
-	
 		return id;
+	}
+	
+	public void addAuthorToAuthors(Author author) {
+		ArrayList<Author> authors = new ArrayList<Author>(this.getAuthors());
+		authors.add(author);
+		this.authors = authors;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", time=" + time + ", body=" + body + ", authors=" + authors
+				+ ", category=" + category + ", tags=" + tags + "]";
 	}
 
 }

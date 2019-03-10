@@ -12,9 +12,10 @@ public class Category {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long categoryId;
 	private String categoryName;
-	@OneToMany(mappedBy = "category")
+	
+	@OneToMany (mappedBy= "category")
 	private Collection<Post> posts;
 
 	public Category() {
@@ -28,8 +29,8 @@ public class Category {
 		return posts;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCategoryId() {
+		return categoryId;
 	}
 
 	public String getCategoryName() {
@@ -38,7 +39,9 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", categoryName=" + categoryName + "]";
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", posts=" + posts + "]";
 	}
+
+
 
 }

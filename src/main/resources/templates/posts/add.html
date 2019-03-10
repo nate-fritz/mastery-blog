@@ -19,7 +19,7 @@
             <li><input class="header__search__box" type="text" value="What are you looking for...?"></li>
             <li><button class="header__search__button" type="submit"><i class="fa fa-search"></i></button></li>
             </div>
-            <a href="/posts"><li class="header__button">Post
+            <a href="/posts/"><li class="header__button">Post
             </li></a>
             <li class="header__button">Login</button>
             </li>
@@ -36,7 +36,7 @@
             <li><input class="menu__search__box" type="text" value="What are you looking for...?"></li>
             <li><button class="menu__search__button" type="submit"><i class="fa fa-search"></i></button></li>
         </div>
-            <a href="/posts"><li class="menu__button">Post</li></a>
+            <a href="/posts/"><li class="menu__button">Post</li></a>
             <li class="menu__button">Login</li>
             </ul>
         
@@ -46,31 +46,40 @@
         <div class="box content">
           <h2>Write a New Post</h2>
           <fieldset class ="post__add__form">        
-          <form action="/posts/add" method="POST">
+          <form action="/posts/" method="POST">
             <ul>
               <li class="post__info__field">Title:</li>
               <li><input class="post__title" type="text" name="title" /></li>
-              <li class="post__info__field">Year:</li>
-              <li><input class="post__year" type="text" name="year" /></li>
-              <li class="post__info__field">Tag:</li>
-              <li><input class="post__tags" type="text" name="tag" /></li>
+              <li class="post__info__field">Category:</li>
+              <select name="categoryId">
+                <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option> 
+             </select>
+              <!-- <li><input class="post__category" type="text" name="category" /></li> -->
+              <li class="post__info__field">Author:</li>
+              <select name="authorId">
+                <option th:each="author : ${authors}" th:value="${author.authorId}" th:text="${author.authorName}"></option> 
+             </select>
+              <!-- <li><input class="post__tags" type="text" name="author" /></li> -->
               <li class="post__info__field">Body:</li>
-              <li><input class="post__body" type="text" name="body"/></li>
-
-                <!-- <select name="tagId">
-                <option th:each="tag : ${allTags}" th:value="${tag.id}" th:text="${tag.name}"></option> -->
-<!--                 </select> -->
+              <li><input class="post__body" type="textarea" name="body"/></li>
+              <li class="post__info__field">Tag:</li>
+              <select name="tagId">
+                <option th:each="tag : ${tags}" th:value="${tag.tagLabel}" th:text="${tag.tagLabel}"></option> 
+             </select>
                 
             </ul>
-                        <button class = "post__add__button" type="submit">Submit</button>
+                <button class = "post__add__button" type="submit">Submit</button>
         </form>
             
           </fieldset>
       
                 <ul>
-            <!-- <li th:each="post : ${posts}">
-                <span th:text="|${post.title},  ${post.year}, ${post.body}|">Default value</span>
-                <span th:each="tag : ${post.tags}" th:text="${tag.name}"></span> -->
+            <li th:each="post : ${posts}">
+                <span th:text="|${post.title}, ${post.time}, ${post.body}|">Title</span>
+                <span th:each="authors : ${post.authors}" th:text="${authors.authorName}">Default Author</span>
+                <span th:each="category : ${post.category}" th:text="${category.categoryName}">Default Category</span>
+                <span th:each="tag : ${post.tags}" th:text="${tag.tagLabel}">Default Tags</span>
+            
             </li>
         </ul>
         <footer class="box footer">The Talk About It Group, © 2019</footer>

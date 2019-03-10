@@ -425,7 +425,7 @@ header ul {
 .content3 {
   margin-left: 0.7rem;
   margin-right: 0.7rem;
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
 .post__add__form {
@@ -444,7 +444,26 @@ header ul {
 }
 
 .post__add__button {
+  background-color: white;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  font-size: 1.3rem;
+  height: 2rem;
+  margin: 0.5rem;
+  min-width: 72px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  float: right;
+}
 
+.post__add__button:hover {
+  background-color: #ff5d00;
+  color: white;
+  border-color: #ff5d00;
+  
 }
 
 .post__title, .post__year, .post__tags, .post__body {

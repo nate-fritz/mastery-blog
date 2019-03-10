@@ -12,7 +12,7 @@ public class Tag {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long tagId;
 	private String tagLabel;
 
 	@ManyToMany(mappedBy="tags")
@@ -20,35 +20,28 @@ public class Tag {
 
 	public Tag() {}
 
-	public Tag(String postTags) {
-		this.tagLabel = postTags;
+	public Tag(String tagLabel) {
+		this.tagLabel = tagLabel;
 	}
 	
 	public Collection<Post> getPosts() {
 		return posts;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getTagId() {
+		return tagId;
 	}
 
 	public String getTagLabel() {
 		return tagLabel;
 	}
 
-	public String getPostTags() {
-		return tagLabel;
-	}
-
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", postTags=" + tagLabel + "]";
+		return "Tag [id=" + tagId + ", postTags=" + tagLabel + "]";
 	}
 
-	public void add(Tag tag) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	
 
