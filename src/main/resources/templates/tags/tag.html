@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/authors-all-style.css">
-    <title>Talk About It! - Author</title>
+    <link rel="stylesheet" href="../css/tags-all-style.css">
+    <title>Talk About It! - Tag</title>
 </head>
-
 <body>
     <header>
         <ul class="navbar">
@@ -37,24 +36,23 @@
         </div>
             <a href="/posts/"><li class="menu__button">Post</li></a>
             <a href="/authors/"><li class="menu__button">Authors</li></a>
-            </ul>
+        </ul>
         </div>
-    </header>
+        </header>
           
     <div class="wrapper">
             <div class="box content">
-              <h2 th:each="author : ${authors}" th:text="|${author.author}|">This Author</h2>
+              <h2 th:each="tag : ${tags}" th:text="|${tag.tagLabel}|">This Tag</h2>
               <ul>
-                <li th:each="author : ${authors}">
-                    <div class="author__info">
+                <li th:each="tag : ${tags}">
+                    <div class="tag__info">
                     <span>Posts: </span>
-                    <ul>
-                    <a th:each="post : ${author.posts}" th:href="@{|../../posts/${post.id}|}"><li class="author__post__list" th:text="${post.title}">Default Posts</li>
+                    <ul><li class="tag__post__list" th:each="post : ${tag.posts}" th:text="${post.title}">Default Posts</li>
                     </ul>
                     </div>
                 </li>
             </ul>
-            <a href="/authors/all/">View All Authors</a>
+            <a href="/tags/all/">View All Tags</a>
         </div><!--box content-->
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->

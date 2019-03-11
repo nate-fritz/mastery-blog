@@ -24,20 +24,17 @@ public class CategoryController {
 	@Resource
 	CategoryRepository categoryRepo;
 
-
-
-
 	@GetMapping("/{id}")
 	public String getCategory(@PathVariable Long id, Model model) throws Exception {
-	Optional<Category> category = categoryRepo.findById(id);	
+	Optional<Category> category = categoryRepo.findById(id);
+	model.addAttribute("posts", postRepo.findAll());
 	if(category.isPresent()) {
 		model.addAttribute("categories", category.get());
 	}
 	else {
 		throw new Exception("Category not found.");
 	}
-		return "categories/category";
-		
+		return "posts/all";
 	}
 	
 	@GetMapping("/")
@@ -45,7 +42,6 @@ public class CategoryController {
 		model.addAttribute("posts", postRepo.findAll());
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "categories/add";
-		
 	}
 	
 	@GetMapping("/all")
@@ -53,18 +49,15 @@ public class CategoryController {
 		model.addAttribute("categories", categoryRepo.findAll());
 		model.addAttribute("posts", postRepo.findAll());
 		return "categories/all";
-		
-		
 	}
 
 	@PostMapping("/")
-	public String addCategory(String name) {
-		Category categoryToAdd = categoryRepo.findByCategory(name);
+	public String addCategory(String category) {
+		Category categoryToAdd = categoryRepo.findByCategory(category);
 		if (categoryToAdd == null) {
-			categoryToAdd = categoryRepo.save(new Category(name));
+			categoryToAdd = categoryRepo.save(new Category(category));
 		}
 		
-		return "redirect:/categories/" + categoryToAdd.getId();
-		
+		return "redirect:/categories/" + categoryToAdd.getId();	
 	}
 }

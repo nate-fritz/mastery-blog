@@ -19,6 +19,7 @@
 /* (1)  Universal Settings */
 * {
   font-family: atrament-web, sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   margin: 0;
@@ -29,6 +30,13 @@ a {
   color: inherit;
 }
 
+a:hover {
+  text-shadow: 1px 1px 1px black;
+}
+
+h2 {
+  font-size: 30px;
+}
 body,
 html {
   height: 100%;
@@ -57,7 +65,7 @@ header {
   height: 95%;
   width: auto;
   margin: 2px;
-  max-height: 4rem;
+  max-height: 64px;
   margin-bottom: -0.5rem;
 }
 
@@ -83,23 +91,23 @@ header ul {
 }
 
 .header__search__box {
-  height: 2rem;
-  width: 20rem;
+  height: 26px;
+  width: 300px;
   border-radius: 5px;
   border-style: solid;
-  padding-left: 1rem;
-  padding-right: 3rem;
-  margin-left: 5rem;
-  font-size: 1rem;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-left: 30%;
 }
 
 .header__search__button {
-  height: 2rem;
+  height: 26px;
   width: 2rem;
   background-color: transparent;
   border-radius: 360px;
   border-style: none;
-  margin-left: -2rem;
+  margin-left: 140%;
+  margin-top: 1px;
 }
 
 .header__search__button:hover {
@@ -110,8 +118,8 @@ header ul {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
-  font-size: 1.3rem;
-  height: 2rem;
+  font-size: 20px;
+  height: 26px;
   margin: 0.5rem;
   min-width: 72px;
   text-align: center;
@@ -253,10 +261,10 @@ header ul {
 
 .menu__search__box {
   height: 2rem;
-  width: 27.5rem;
+  width: 440px;
   border-radius: 5px;
   border-style: solid;
-  padding-left: 1rem;
+  padding-left: 10px;
 }
 
 .menu__search__button {
@@ -265,7 +273,7 @@ header ul {
   background-color: transparent;
   border-radius: 360px;
   border-style: none;
-  margin-left: -2rem;
+  margin-left: -40px;
 }
 
 .menu__search__button:hover {
@@ -330,8 +338,8 @@ header ul {
   background-color: #ff5d00;
   box-shadow: 1px 1px 1px  black;
   color: white;
-  padding: 1rem;
   margin: -10px;
+  padding: 10px;
 }
 
 .wrapper p {
@@ -378,6 +386,8 @@ header ul {
     grid-template-areas:
     "viewport viewport viewport"
     "content content2 content3"
+    ". content2 ."
+    ". content2 ."
     "footer  footer  footer";
     max-width: 100%;
   }
@@ -420,7 +430,6 @@ header ul {
   }
 }
 
-
 /* (6) Body */
 .main__logo {
   align-self: center;
@@ -432,7 +441,6 @@ header ul {
   padding-right: 2rem;
   padding-top: 1rem;
 }
-
 
 .box {
   background-color: white;
@@ -448,6 +456,27 @@ header ul {
 .content3 {
   margin-left: 0.7rem;
   margin-right: 0.7rem;
+  margin-bottom: 60px;
+  padding-bottom: 0px;
+}
+
+.content__header, 
+.content2__header, 
+.content3__header {
+  font-size: 30px;
+}
+
+.all__tags:hover,
+.all__posts:hover,
+.all__categories:hover {
+  text-shadow: 1px 1px 1px black;
+}
+
+.category__info,
+.post__info, 
+.tag__info {
+  padding: 10px;
+  border-bottom: 1px solid black;
 }
 
 /* (7) Footer */

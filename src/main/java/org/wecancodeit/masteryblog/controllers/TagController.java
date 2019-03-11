@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblog.models.Tag;
-import org.wecancodeit.masteryblog.repositories.AuthorRepository;
-import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
 import org.wecancodeit.masteryblog.repositories.TagRepository;
 
@@ -24,15 +22,9 @@ public class TagController {
 	PostRepository postRepo;
 
 	@Resource
-	CategoryRepository categoryRepo;
-
-	@Resource
 	TagRepository tagRepo;
 
-	@Resource
-	AuthorRepository authorRepo;
-
-	@GetMapping("/tag/{id}") 
+	@GetMapping("/{id}")
 	public String getTag(@PathVariable Long id, Model model) throws Exception {
 		Optional<Tag> tag = tagRepo.findById(id);
 		if (tag.isPresent()) {
@@ -40,27 +32,31 @@ public class TagController {
 		} else {
 			throw new Exception("Tag not found.");
 		}
-
 		return "tags/tag";
 	}
-	
+
+//	Allows linking to tags/add page
 	@GetMapping("/")
+	public String getTagForm(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
+		model.addAttribute("tags", tagRepo.findAll());
+		return "tags/add";
+	}
+
+	@GetMapping("/all")
 	public String getAllTags(Model model) {
 		model.addAttribute("tags", tagRepo.findAll());
-		return "tags/tags";
-		
-		
+		model.addAttribute("posts", postRepo.findAll());
+		return "tags/all";
 	}
-	
+
+//	Allows creation of new tag on "Submit" button
 	@PostMapping("/")
-	public String addTag(String name) {
-		Tag tagToAdd = tagRepo.findByTagLabel(name);
+	public String addTag(String tag) {
+		Tag tagToAdd = tagRepo.findByTagLabel(tag);
 		if (tagToAdd == null) {
-			tagToAdd = tagRepo.save(new Tag(name));
+			tagToAdd = tagRepo.save(new Tag(tag));
 		}
-		
-		return "redirect:/tags/";
-		
+		return "redirect:/tags/" + tagToAdd.getTagId();
 	}
 }
-

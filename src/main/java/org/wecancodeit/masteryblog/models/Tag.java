@@ -40,9 +40,4 @@ public class Tag {
 	public String toString() {
 		return "Tag [id=" + tagId + ", postTags=" + tagLabel + "]";
 	}
-
-
-	
-	
-
 }

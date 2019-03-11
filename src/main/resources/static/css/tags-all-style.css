@@ -143,7 +143,7 @@ header ul {
 .button {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 2.5rem;
+  font-size: 20px;
   font-style: bold;
   margin-top: 0px;
   background-color: white;
@@ -301,7 +301,6 @@ header ul {
   border-color: #ff5d00;
 }
 
-
 /* (3) Grid Areas */
 .content {
   grid-area: content;
@@ -438,7 +437,16 @@ header ul {
   margin-bottom: 3rem;
 }
 
-.post__body__field {
+.all__tags {
+  padding: 10px;
+}
+
+.all__tags:hover {
+  text-shadow: 1px 1px 1px black;
+
+}
+
+.tag__body__field {
   background-color: white;
   border-style: solid;
   border-width: 1px 1px 1px;
@@ -447,7 +455,7 @@ header ul {
   text-align: left;
 }
 
-.post__info {
+.tag__info {
   border-bottom-style: solid;
   border-bottom-color: black;
   display: grid;
@@ -458,7 +466,7 @@ header ul {
   padding-bottom: 1rem;
 }
 
-.post__info__field {
+.tag__info__field {
   background-color: white;
   border-style: solid;
   border-width: 1px 1px 1px;
@@ -471,7 +479,7 @@ header ul {
   white-space: nowrap;
 }
 
-.post__tag__list {
+.tag__post__list {
   padding: 2px;
 }
 

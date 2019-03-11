@@ -19,20 +19,29 @@
 /* (1)  Universal Settings */
 * {
   font-family: atrament-web, sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   margin: 0;
   padding: 0;
 }
+
+h2 {
+  font-size: 30px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
+a:hover {
+  text-shadow: 1px 1px 1px black;
+}
+
 body,
 html {
   height: 100%;
-  width: 100%
 }
 
 li {
@@ -58,7 +67,7 @@ header {
   height: 95%;
   width: auto;
   margin: 2px;
-  max-height: 4rem;
+  max-height: 64px;
   margin-bottom: -0.5rem;
 }
 
@@ -84,23 +93,23 @@ header ul {
 }
 
 .header__search__box {
-  height: 2rem;
-  width: 20rem;
+  height: 26px;
+  width: 300px;
   border-radius: 5px;
   border-style: solid;
-  padding-left: 1rem;
-  padding-right: 3rem;
-  margin-left: 5rem;
-  font-size: 1rem;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-left: 30%;
 }
 
 .header__search__button {
-  height: 2rem;
+  height: 26px;
   width: 2rem;
   background-color: transparent;
   border-radius: 360px;
   border-style: none;
-  margin-left: -2rem;
+  margin-left: 140%;
+  margin-top: 1px;
 }
 
 .header__search__button:hover {
@@ -111,8 +120,8 @@ header ul {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
-  font-size: 1.3rem;
-  height: 2rem;
+  font-size: 20px;
+  height: 26px;
   margin: 0.5rem;
   min-width: 72px;
   text-align: center;
@@ -254,10 +263,10 @@ header ul {
 
 .menu__search__box {
   height: 2rem;
-  width: 27.5rem;
+  width: 440px;
   border-radius: 5px;
   border-style: solid;
-  padding-left: 1rem;
+  padding-left: 10px;
 }
 
 .menu__search__button {
@@ -266,7 +275,7 @@ header ul {
   background-color: transparent;
   border-radius: 360px;
   border-style: none;
-  margin-left: -2rem;
+  margin-left: -40px;
 }
 
 .menu__search__button:hover {

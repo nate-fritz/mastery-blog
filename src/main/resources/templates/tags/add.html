@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/authors-all-style.css">
-    <title>Talk About It! - Author</title>
+    <link rel="stylesheet" href="../css/tags-add-style.css">
+    <title>Talk About It! - Add a new tag</title>
 </head>
 
 <body>
@@ -40,22 +40,19 @@
             </ul>
         </div>
     </header>
-          
+
     <div class="wrapper">
-            <div class="box content">
-              <h2 th:each="author : ${authors}" th:text="|${author.author}|">This Author</h2>
-              <ul>
-                <li th:each="author : ${authors}">
-                    <div class="author__info">
-                    <span>Posts: </span>
-                    <ul>
-                    <a th:each="post : ${author.posts}" th:href="@{|../../posts/${post.id}|}"><li class="author__post__list" th:text="${post.title}">Default Posts</li>
-                    </ul>
-                    </div>
-                </li>
+        <div class="box content">
+          <h2>Add a new Tag</h2>
+          <fieldset class ="tag__add__form">        
+          <form action="/tags/" method="POST">
+            <ul>
+              <li class="tag__info__field">Label:</li>
+              <li><input class="tag__name" type="text" name="tag" /></li>
             </ul>
-            <a href="/authors/all/">View All Authors</a>
-        </div><!--box content-->
+            <button class = "tag__add__button" type="submit">Submit</button>
+            </form>
+          </fieldset>
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->
 </body>
