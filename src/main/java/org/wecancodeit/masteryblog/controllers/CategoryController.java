@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.masteryblog.models.Category;
-import org.wecancodeit.masteryblog.repositories.AuthorRepository;
 import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
-import org.wecancodeit.masteryblog.repositories.TagRepository;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
 	@Resource
@@ -26,14 +24,10 @@ public class CategoryController {
 	@Resource
 	CategoryRepository categoryRepo;
 
-	@Resource
-	TagRepository tagRepo;
-
-	@Resource
-	AuthorRepository authorRepo;
 
 
-	@GetMapping("/category/{id}")
+
+	@GetMapping("/{id}")
 	public String getCategory(@PathVariable Long id, Model model) throws Exception {
 	Optional<Category> category = categoryRepo.findById(id);	
 	if(category.isPresent()) {
@@ -47,9 +41,18 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/")
+	public String getCategoryForm(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "categories/add";
+		
+	}
+	
+	@GetMapping("/all")
 	public String getAllCategories(Model model) {
 		model.addAttribute("categories", categoryRepo.findAll());
-		return "categories/categories";
+		model.addAttribute("posts", postRepo.findAll());
+		return "categories/all";
 		
 		
 	}
@@ -61,7 +64,7 @@ public class CategoryController {
 			categoryToAdd = categoryRepo.save(new Category(name));
 		}
 		
-		return "redirect:/categories/";
+		return "redirect:/categories/" + categoryToAdd.getId();
 		
 	}
 }
