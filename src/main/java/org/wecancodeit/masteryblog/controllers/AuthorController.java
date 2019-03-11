@@ -42,7 +42,7 @@ public class AuthorController {
 //	Allows linking to authors/add page
 	@GetMapping("/")
 	public String getAuthorForm(Model model) {
-		model.addAttribute("posts", postRepo.findAll());
+
 		model.addAttribute("authors", authorRepo.findAll());
 		return "authors/add";
 	}

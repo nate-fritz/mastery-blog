@@ -42,7 +42,7 @@ public class CategoryController {
 	
 	@GetMapping("/")
 	public String getCategoryForm(Model model) {
-		model.addAttribute("posts", postRepo.findAll());
+
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "categories/add";
 		
@@ -58,10 +58,10 @@ public class CategoryController {
 	}
 
 	@PostMapping("/")
-	public String addCategory(String name) {
-		Category categoryToAdd = categoryRepo.findByCategory(name);
+	public String addCategory(String category) {
+		Category categoryToAdd = categoryRepo.findByCategory(category);
 		if (categoryToAdd == null) {
-			categoryToAdd = categoryRepo.save(new Category(name));
+			categoryToAdd = categoryRepo.save(new Category(category));
 		}
 		
 		return "redirect:/categories/" + categoryToAdd.getId();

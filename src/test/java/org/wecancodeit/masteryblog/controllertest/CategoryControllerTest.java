@@ -46,11 +46,11 @@ public class CategoryControllerTest {
 	}
 	
     @Test
-	public void shouldAddCategoryToModel() {
+	public void shouldAddCategoryToModel() throws Exception {
 		Long categoryId = 1L;
 		when(categoryRepo.findById(categoryId)).thenReturn(Optional.of(category));
 		
-		underTest.displaySingleCategory(categoryId, model);
+		underTest.getCategory(categoryId, model);
 		
 		verify(model).addAttribute("category", category);
 	}
