@@ -6,61 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/posts-all-style.css">
-    <title>Talk About It - All Posts</title>
+    <link rel="stylesheet" href="../../css/posts-all-style.css">
+    <title>Talk About It! - All Posts</title>
 </head>
 
 <body>
     <header>
-        <ul class="navbar">
-            <li><a href="/"><img class="header__logo" src="../img/logo-orange-transparent-background.png"></a></li>
-            <div class="header__search">
-            <li><input class="header__search__box" type="text" value="What are you looking for...?"></li>
-            <li><button class="header__search__button" type="submit"><i class="fa fa-search"></i></button></li>
-            </div>
-            <a href="/posts"><li class="header__button">Post
-            </li></a>
-            <li class="header__button">Login</button>
-            </li>
-            <li><label for="p1" class="mobile__menu__button"><i class="fa fa-bars"></i></label></li>
-        </ul>
-        
-        <input type="checkbox" class="hide" id="p1">
-        
-        <div id="popup1" class="overlay">
-            <ul class="popup">
-            <li class="menu__logo"><a href="/"><img class="menu__logo__png" src="../img/logo-orange-transparent-background.png"></a></li>
-            <label for="p1" class="close">&times;</label>
-        <div class="menu__search">
-            <li><input class="menu__search__box" type="text" value="What are you looking for...?"></li>
-            <li><button class="menu__search__button" type="submit"><i class="fa fa-search"></i></button></li>
-        </div>
-            <a href="/posts"><li class="menu__button">Post</li></a>
-            <li class="menu__button">Login</li>
+            <ul class="navbar">
+                <li><a href="/"><img class="header__logo" src="../img/logo-orange-transparent-background.png"></a></li>
+                <div class="header__search">
+                <li><input class="header__search__box" type="text" value="What are you looking for...?"></li>
+                <li><button class="header__search__button" type="submit"><i class="fa fa-search"></i></button></li>
+                </div>
+                <a href="/posts/"><li class="header__button">Post
+                </li></a>
+                <li class="header__button">Login</button>
+                </li>
+                <li><label for="p1" class="mobile__menu__button"><i class="fa fa-bars"></i></label></li>
             </ul>
-        
-        </div>
-    </header>
+            
+            <input type="checkbox" class="hide" id="p1">
+            
+            <div id="popup1" class="overlay">
+                <ul class="popup">
+                <li class="menu__logo"><a href="/"><img class="menu__logo__png" src="../img/logo-orange-transparent-background.png"></a></li>
+                <label for="p1" class="close">&times;</label>
+            <div class="menu__search">
+                <li><input class="menu__search__box" type="text" value="What are you looking for...?"></li>
+                <li><button class="menu__search__button" type="submit"><i class="fa fa-search"></i></button></li>
+            </div>
+                <a href="/posts/"><li class="menu__button">Post</li></a>
+                <li class="menu__button">Login</li>
+                </ul>
+            
+            </div>
+        </header>
 
     <div class="wrapper">
             <div class="box content">
               <h2>All Items</h2>
               <ul>
-                <li th:each="post : ${posts}">
-                    <div class="post__info">
-                    <span>Post Title: </span>
-                    <span class="post__info__field" th:text="|${post.name}|">Default value</span>
-                    <span>Author: </span>
-                    <span class="post__info__field" th:text="|${post.publisher}|">Default value</span>
-                    <span>Category: </span>
-                    <span class="post__info__field" th:text="|${post.price}|">Default value</span>
-                    <span>Date: </span>
-                    <span class="post__info__field" th:text="|${post.year}|">Default value</span>
-                    <span>Body: </span>
-                    <span class="post__info__field" th:text="|${post.content}|">Default value</span>
-                    </div>
-                </li>
-            </ul>
+                    <li th:each="post : ${posts}">
+                        <div class="post__info">
+                        <span>Title: </span>
+                        <span class="post__info__field" th:text="|${post.title}|">Default Title</span>
+                        <span>Authors: </span>
+                        <span class="post__info__field" th:each="author : ${post.authors}" th:text="${author.author}">Default Author</span>
+                        <span>Category: </span>
+                        <span class="post__info__field" th:each="category : ${post.category}" th:text="${category.category}">Default Category</span>
+                        <span>Date: </span>
+                        <span class="post__info__field" th:text="|${post.time}|">Default Category</span>
+                        <span>Body: </span>
+                        <article class="post__body__field" th:text="|${post.body}|">Default value</article>
+                        <span>Tagged as:</span>
+                        <ul><li class="post__tag__list" th:each="tag : ${post.tags}" th:text="|${tag.tagLabel}|">Default Tags</li>
+                        </ul>
+                        </div>
+                    </li>
+                </ul>
         </div><!--box content-->
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->

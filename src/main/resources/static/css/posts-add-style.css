@@ -462,6 +462,9 @@ header ul {
   width: 100%
 }
 
+.tag__selection {
+  margin: 5px;
+}
 
 /* (7) Footer */
 .footer {

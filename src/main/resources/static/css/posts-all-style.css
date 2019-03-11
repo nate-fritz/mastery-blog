@@ -428,6 +428,15 @@ header ul {
   margin-bottom: 3rem;
 }
 
+.post__body__field {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px 1px 1px;
+  box-shadow: 1px 1px 1px inset black;
+  padding: 2px;
+  text-align: left;
+}
+
 .post__info {
   border-bottom-style: solid;
   border-bottom-color: black;
@@ -452,6 +461,11 @@ header ul {
   white-space: nowrap;
 }
 
+.post__tag__list {
+  padding: 2px;
+}
+
+
 /* (7) Footer */
 .footer {
   background-color: white;
@@ -464,4 +478,5 @@ header ul {
   left: 0;
   bottom: 0;
   width: 100%;
+  font-size: 1rem;
 }

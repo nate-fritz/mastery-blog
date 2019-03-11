@@ -49,12 +49,21 @@ public class PostController {
 	
 //	Allows linking to posts/add page
 	@GetMapping("/")
-	public String getAllPosts(Model model) {
+	public String getPostForm(Model model) {
 		model.addAttribute("posts", postRepo.findAll());
 		model.addAttribute("categories", categoryRepo.findAll());
 		model.addAttribute("authors", authorRepo.findAll());
 		model.addAttribute("tags", tagRepo.findAll());
 		return "posts/add";
+	}
+	
+	@GetMapping("/all")
+	public String getAllPosts(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("authors", authorRepo.findAll());
+		model.addAttribute("tags", tagRepo.findAll());
+		return "posts/all";
 	}
 	
 //	Allows creation of new post on "Submit" button.
