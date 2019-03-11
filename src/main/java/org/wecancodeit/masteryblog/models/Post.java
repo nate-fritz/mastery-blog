@@ -1,8 +1,10 @@
 package org.wecancodeit.masteryblog.models;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Arrays;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Post {
 
@@ -18,8 +21,8 @@ public class Post {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	private LocalDateTime dateTime;
-	
+	private LocalDateTime time;
+
 	@Lob
 	private String body;
 
@@ -30,32 +33,29 @@ public class Post {
 	private Category category;
 
 	@ManyToMany
-	private Collection<Tag> tags;
+	private List<Tag> tags;
 
 	
 			
 	public Post() {
 	}
 
-	public Post(String title, String body, Category category, Author author, Tag ...tags) {
+	public Post(String title, String body, String time, Category category, Author author, Tag ...tags) {
         this.title = title;
         this.body = body;
-        this.category= category;
-        this.dateTime= LocalDateTime.now();
+        this.category = category;
+        this.time = LocalDateTime.now();
         this.authors = Arrays.asList(author);
         this.tags = Arrays.asList(tags);
+
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	
-
-
-
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	public LocalDateTime getTime() {
+		return time;
 	}
 
 	public String getBody() {
@@ -75,13 +75,17 @@ public class Post {
 	}
 
 	public void addTagToTags(Tag tag) {
-		tag.add(tag);
+		ArrayList<Tag> tags = new ArrayList<Tag>(this.getTags());
+		tags.add(tag);
+		this.tags = tags;
 		
 	}
 
 	public Long getId() {
-	
 		return id;
 	}
+	
+
+
 
 }

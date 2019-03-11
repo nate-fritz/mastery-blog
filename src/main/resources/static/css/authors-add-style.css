@@ -399,17 +399,8 @@ header ul {
   }
 }
 
-/* (6) Body */
-.main__logo {
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  height: 90%;
-  padding-right: 2rem;
-}
 
+/* (6) Body */
 
 .box {
   background-color: white;
@@ -425,46 +416,45 @@ header ul {
 .content3 {
   margin-left: 0.7rem;
   margin-right: 0.7rem;
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
-.post__body__field {
-  background-color: white;
-  border-style: solid;
-  border-width: 1px 1px 1px;
-  box-shadow: 1px 1px 1px inset black;
-  padding: 2px;
-  text-align: left;
-}
-
-.post__info {
+.author__add__form {
   border-bottom-style: solid;
   border-bottom-color: black;
-  display: grid;
-  grid-template-columns: .25fr 1fr;
+  display: flex;
+  flex-direction: rows;
   grid-gap: 2px;
   margin: 1rem;
   margin-top: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
 }
 
-.post__info__field {
+.author__add__button {
   background-color: white;
+  border-radius: 5px;
   border-style: solid;
-  border-width: 1px 1px 1px;
-  box-shadow: 1px 1px 1px inset black;
-  padding: 2px;
-  max-height: 2rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  text-align: right;
-  white-space: nowrap;
+  border-color: black;
+  border-width: 2px;
+  font-size: 1.3rem;
+  height: 2rem;
+  margin: 0.5rem;
+  min-width: 72px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  float: right;
 }
 
-.post__tag__list {
-  padding: 2px;
+.author__add__button:hover {
+  background-color: #ff5d00;
+  color: white;
+  border-color: #ff5d00;
 }
 
+.author__name {
+  width: 100%
+}
 
 /* (7) Footer */
 .footer {

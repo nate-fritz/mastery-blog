@@ -1,19 +1,21 @@
 package org.wecancodeit.masteryblog.controllers;
 
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.wecancodeit.masteryblog.repositories.AuthorRepository;
+import org.wecancodeit.masteryblog.models.Category;
 import org.wecancodeit.masteryblog.repositories.CategoryRepository;
 import org.wecancodeit.masteryblog.repositories.PostRepository;
-import org.wecancodeit.masteryblog.repositories.TagRepository;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
 	@Resource
@@ -22,22 +24,47 @@ public class CategoryController {
 	@Resource
 	CategoryRepository categoryRepo;
 
-	@Resource
-	TagRepository tagRepo;
 
-	@Resource
-	AuthorRepository authorRepo;
 
-	@GetMapping("")
-	public String displayCategory(Model model) {
-		model.addAttribute("categories", categoryRepo.findAll());
-		return "/category";
+
+	@GetMapping("/{id}")
+	public String getCategory(@PathVariable Long id, Model model) throws Exception {
+	Optional<Category> category = categoryRepo.findById(id);	
+	if(category.isPresent()) {
+		model.addAttribute("categories", category.get());
+	}
+	else {
+		throw new Exception("Category not found.");
+	}
+		return "categories/category";
+		
 	}
 	
-	@GetMapping("/{id}")
-	public String displaySingleCategory (@PathVariable Long id, Model model) {
-		model.addAttribute("category", categoryRepo.findById(id).get());
+	@GetMapping("/")
+	public String getCategoryForm(Model model) {
+		model.addAttribute("posts", postRepo.findAll());
 		model.addAttribute("categories", categoryRepo.findAll());
-		return "category";
+		return "categories/add";
+		
+	}
+	
+	@GetMapping("/all")
+	public String getAllCategories(Model model) {
+		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("posts", postRepo.findAll());
+		return "categories/all";
+		
+		
+	}
+
+	@PostMapping("/")
+	public String addCategory(String name) {
+		Category categoryToAdd = categoryRepo.findByCategory(name);
+		if (categoryToAdd == null) {
+			categoryToAdd = categoryRepo.save(new Category(name));
+		}
+		
+		return "redirect:/categories/" + categoryToAdd.getId();
+		
 	}
 }
