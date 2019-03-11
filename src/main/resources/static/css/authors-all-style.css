@@ -301,7 +301,6 @@ header ul {
   border-color: #ff5d00;
 }
 
-
 /* (3) Grid Areas */
 .content {
   grid-area: content;
@@ -438,7 +437,7 @@ header ul {
   margin-bottom: 3rem;
 }
 
-.post__body__field {
+.author__body__field {
   background-color: white;
   border-style: solid;
   border-width: 1px 1px 1px;
@@ -447,7 +446,7 @@ header ul {
   text-align: left;
 }
 
-.post__info {
+.author__info {
   border-bottom-style: solid;
   border-bottom-color: black;
   display: grid;
@@ -458,7 +457,7 @@ header ul {
   padding-bottom: 1rem;
 }
 
-.post__info__field {
+.author__info__field {
   background-color: white;
   border-style: solid;
   border-width: 1px 1px 1px;
@@ -471,7 +470,7 @@ header ul {
   white-space: nowrap;
 }
 
-.post__tag__list {
+.author__post__list {
   padding: 2px;
 }
 

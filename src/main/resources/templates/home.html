@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/home-style.css">
-    <title>Talk About It - A blog site for the people</title>
+    <title>Talk About It! - A blog site for the people</title>
 </head>
 
 <body>
@@ -18,10 +18,10 @@
             <li><input class="header__search__box" type="text" value="What are you looking for...?"></li>
             <li><button class="header__search__button" type="submit"><i class="fa fa-search"></i></button></li>
             </div>
-            <a href="/posts"><li class="header__button">Post
+            <a href="/posts/"><li class="header__button">Post
             </li></a>
-            <li class="header__button">Login</button>
-            </li>
+            <a href="/authors/"><li class="header__button">Authors</button>
+            </li></a>
             <li><label for="p1" class="mobile__menu__button"><i class="fa fa-bars"></i></label></li>
         </ul>
         
@@ -35,10 +35,9 @@
             <li><input class="menu__search__box" type="text" value="What are you looking for...?"></li>
             <li><button class="menu__search__button" type="submit"><i class="fa fa-search"></i></button></li>
         </div>
-            <a href="/posts"><li class="menu__button">Post</li></a>
-            <li class="menu__button">Login</li>
+            <a href="/posts/"><li class="menu__button">Post</li></a>
+            <a href="/authors/"><li class="menu__button">Authors</li></a>
             </ul>
-        
         </div>
     </header>
 
@@ -46,14 +45,41 @@
             <div class="viewport"><img class="main__logo" src="../img/logo-transparent-background.png">
       </div>
             <div class="box content">
-              <h2>Content 1</h2>
-              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p></div><!--box content-->
+              <h2 class="content__header">Recent Tags</h2>
+              <p> Check out these recent tags!
+                    <ul>
+                        <li th:each="tag : ${tags}">
+                            <div class="post__info">
+                            <a th:href="@{|tags/${tag.tagId}|}"><span class="tag" th:text="|${tag.tagLabel}|">Default Tag</span></a>
+                            </div>
+                        </li>
+                    </ul>
+              </p><a class="all__tags" href="/tags/all/"><p>See all<p></a>
+            </div><!--box content-->
              <div class="box content2">
-               <h2>Content 2</h2>              
-               <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p></div><!--box content2-->
+               <h2 class="content2__header">Recent Posts</h2>              
+               <p> Check out these recent posts!
+                    <ul>
+                        <li th:each="post : ${posts}">
+                            <div class="post__info">
+                            <a th:href="@{|posts/${post.id}|}"><span class="post__info__field" th:text="|${post.title} by |">Default Post</span><span th:each="author : ${post.authors}" th:href="@{|/authors/${author.id}|}">
+                                <span th:text="${author.author}"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+              </p><a class="all__categories" href="/posts/all/"><p>See all<p></a>
+            </div><!--box content2-->
             <div class="box content3">
-              <h2>Content 3</h2>
-              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis laudantium animi commodi pariatur earum exercitationem quisquam delectus praesentium. Id iusto ut commodi delectus enim dolores cupiditate exercitationem odio alias recusandae?</p> </div><!--box content3-->
+              <h2 class="content3__header">Recent Categories</h2>
+              <p> Check out these recent categories!
+                    <ul>
+                        <li th:each="category : ${categories}">
+                            <div class="category__info">
+                            <a th:href="@{|categories/${category.id}|}"><span class="category__info__field" th:text="|${category.category}|">Default Category</span></a>
+                            </div>
+                        </li>
+                    </ul>
+              </p><a class="all__categories" href="/categories/all/"><p>See all<p></a> </div><!--box content3-->
             <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->
 </body>

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/posts-all-style.css">
-    <title>Talk About It! - All Posts</title>
+    <link rel="stylesheet" href="../../css/authors-all-style.css">
+    <title>Talk About It! - All Authors</title>
 </head>
 
 <body>
@@ -43,29 +43,19 @@
 
     <div class="wrapper">
         <div class="box content">
-            <h2>All Posts</h2>
+            <h2>All Authors</h2>
             <ul>
-                <li th:each="post : ${posts}">
-                    <div class="post__info">
-                    <span>Title: </span>
-                    <a class="post__info__field" th:href="@{|/posts/${post.id}|}"><span th:text="|${post.title}|">Default Title</span></a>
-                    <span>Authors: </span>
-                    <a class="post__info__field" th:each="author : ${post.authors}" th:href="@{|/authors/${author.id}|}">
-                    <span th:text="${author.author}">Default Author</span></a>
-                    <span>Category: </span>
-                    <a class="post__info__field" th:each="category : ${post.category}" th:href="@{|/categories/${category.id}|}">
-                    <span th:text="${category.category}">Default Author</span></a>
-                    <span>Date: </span>
-                    <span class="post__info__field" th:text="|${post.time}|">Default Category</span>
-                    <span>Body: </span>
-                    <article class="post__body__field" th:text="|${post.body}|">Default value</article>
-                    <span>Tagged as:</span>
-                    <ul>
-                        <a th:each="tag : ${post.tags}" th:href="@{|tags/${tag.tagId}|}"><li class="post__tag__list" th:text="|${tag.tagLabel}|">Default Tags</li></a>
-                    </ul>
-                    </div>
-                </li>
-            </ul>
+                <li th:each="author : ${authors}">
+                        <div class="author__info">
+                        <span>Name: </span>
+                        <a class="author__info__field" th:href="@{|../${author.id}|}"><span th:text="|${author.author}|">Default Name</span></a>
+                        <span>Posts: </span>
+                        <ul>
+                        <a th:each="post : ${author.posts}" th:href="@{|../../posts/${post.id}|}"><li class="author__post__list" th:text="${post.title}">No posts found.</li></a>
+                        </ul>
+                        </div>
+                    </li>
+                </ul>
         </div><!--box content-->
         <footer class="box footer">The Talk About It Group, © 2019</footer>
     </div><!--wrapper-->

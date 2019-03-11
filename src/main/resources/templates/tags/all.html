@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/tags-all-style.css">
+    <title>Talk About It! - All Tags</title>
+</head>
+
+<body>
+        <header>
+                <ul class="navbar">
+                    <li><a href="/"><img class="header__logo" src="../../img/logo-orange-transparent-background.png"></a></li>
+                    <div class="header__search">
+                    <li><input class="header__search__box" type="text" value="What are you looking for...?"></li>
+                    <li><button class="header__search__button" type="submit"><i class="fa fa-search"></i></button></li>
+                    </div>
+                    <a href="/posts/"><li class="header__button">Post
+                    </li></a>
+                    <a href="/authors/"><li class="header__button">Authors</button>
+                    </li></a>
+                    <li><label for="p1" class="mobile__menu__button"><i class="fa fa-bars"></i></label></li>
+                </ul>
+                
+                <input type="checkbox" class="hide" id="p1">
+                
+                <div id="popup1" class="overlay">
+                    <ul class="popup">
+                    <li class="menu__logo"><a href="/"><img class="menu__logo__png" src="../../img/logo-orange-transparent-background.png"></a></li>
+                    <label for="p1" class="close">&times;</label>
+                <div class="menu__search">
+                    <li><input class="menu__search__box" type="text" value="What are you looking for...?"></li>
+                    <li><button class="menu__search__button" type="submit"><i class="fa fa-search"></i></button></li>
+                </div>
+                    <a href="/posts/"><li class="menu__button">Post</li></a>
+                    <a href="/authors/"><li class="menu__button">Authors</li></a>
+                    </ul>
+                </div>
+            </header>
+
+    <div class="wrapper">
+        <div class="box content">
+            <h2>All Tags</h2>
+            <p><a class="all__tags" href="/tags/">Add a new tag</a></p>
+            <ul>
+                <li th:each="tag : ${tags}">
+                        <div class="tag__info">
+                        <span>Tag: </span>
+                        <a class="tag__info__field" th:href="@{|../${tag.tagId}|}"><span th:text="|${tag.tagLabel}|">Default Name</span></a>
+                        <span>Posts: </span>
+                        <ul>
+                        <a th:each="post : ${tag.posts}" th:href="@{|../../posts/${post.id}|}"><li class="tag__post__list" th:text="${post.title}">No posts found.</li></a>
+                        </ul>
+                        </div>
+                    </li>
+                </ul>
+        </div><!--box content-->
+        <footer class="box footer">The Talk About It Group, © 2019</footer>
+    </div><!--wrapper-->
+</body>
+</html>

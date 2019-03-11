@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/mwv1yui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/posts-add-style.css">
-    <title>Talk About It! - Add New Post</title>
+    <link rel="stylesheet" href="../css/tags-add-style.css">
+    <title>Talk About It! - Add a new tag</title>
 </head>
 
 <body>
@@ -43,30 +43,14 @@
 
     <div class="wrapper">
         <div class="box content">
-          <h2>Write a New Post</h2>
-          <fieldset class ="post__add__form">        
-          <form action="/posts/" method="POST">
+          <h2>Add a new Tag</h2>
+          <fieldset class ="tag__add__form">        
+          <form action="/tags/" method="POST">
             <ul>
-              <li class="post__info__field">Title:</li>
-              <li><input class="post__title" type="text" name="title" /></li>
-              <li class="post__info__field">Category:</li>
-              <select name="category">
-                <option th:each="category : ${categories}" 
-                th:value="${category.category}" 
-                th:text="${category.category}">
-                </option> 
-             </select>
-              <li class="post__info__field">Author:</li>
-              <select name="author">
-                <option th:each="author : ${authors}" th:value="${author.author}" th:text="${author.author}"></option> 
-             </select>
-              <!-- <li><input class="post__tags" type="text" name="author" /></li> -->
-              <li class="post__info__field">Body:</li>
-              <li><textarea class="post__body" wrap="hard" name="body"></textarea></li>
-              <li class="post__info__field">Tags:</li>
-              <input class="tag__selection" name="tags" type="radio" th:each="tag : ${tags}" th:value="${tag.tagLabel}" th:text="${tag.tagLabel}">
+              <li class="tag__info__field">Label:</li>
+              <li><input class="tag__name" type="text" name="tag" /></li>
             </ul>
-            <button class = "post__add__button" type="submit">Submit</button>
+            <button class = "tag__add__button" type="submit">Submit</button>
             </form>
           </fieldset>
         <footer class="box footer">The Talk About It Group, © 2019</footer>
