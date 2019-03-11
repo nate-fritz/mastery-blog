@@ -39,7 +39,7 @@ public class CategoryController {
 	
 	@GetMapping("/")
 	public String getCategoryForm(Model model) {
-		model.addAttribute("posts", postRepo.findAll());
+
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "categories/add";
 	}

@@ -39,7 +39,7 @@ public class CategoryJpaTest {
 		Optional<Category> categoryToFind = categoryRepo.findById(categoryId);
 		category = categoryToFind.get();
 
-		assertThat(category.getCategoryName(), is("Fiction"));
+		assertThat(category.getCategory(), is("Fiction"));
 	}
 
 }

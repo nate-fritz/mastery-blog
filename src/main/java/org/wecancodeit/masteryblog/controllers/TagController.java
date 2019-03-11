@@ -38,7 +38,11 @@ public class TagController {
 //	Allows linking to tags/add page
 	@GetMapping("/")
 	public String getTagForm(Model model) {
+<<<<<<< HEAD
 		model.addAttribute("posts", postRepo.findAll());
+=======
+	
+>>>>>>> f03684c748a4e54e9d6d07508cd8586d70e01d40
 		model.addAttribute("tags", tagRepo.findAll());
 		return "tags/add";
 	}

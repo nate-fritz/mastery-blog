@@ -45,7 +45,7 @@ public class PostJpaTest {
 		Category testCategory = categoryRepo.save(new Category("category"));
 		Author testAuthor = authorRepo.save(new Author("author"));
 		Tag testTag = tagRepo.save(new Tag("tag"));
-		Post post = postRepo.save(new Post("title", "body", testCategory, testAuthor, testTag ));
+		Post post = postRepo.save(new Post("title", "body", "time", testCategory, testAuthor, testTag ));
 		
 		Long postId = post.getId();
 		

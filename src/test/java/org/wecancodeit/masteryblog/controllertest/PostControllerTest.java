@@ -46,11 +46,11 @@ public class PostControllerTest {
 	}
 	
     @Test
-	public void shouldAddPostToModel() {
-		Long postId = 1L;
-		when(postRepo.findById(postId)).thenReturn(Optional.of(post));
+	public void shouldAddPostToModel() throws Exception {
+		Long id = 1L;
+		when(postRepo.findById(id)).thenReturn(Optional.of(post));
 		
-		underTest.singlePost(postId, model);
+		underTest.getPost(id, model);
 		
 		verify(model).addAttribute("post", post);
 	}
