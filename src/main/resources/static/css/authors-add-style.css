@@ -1,0 +1,472 @@
+/* |---------------------------------- Outline ----------------------------------|*/
+/* This stylesheet should be used for all pages within this domain.               */
+/* Please use the following outline to find desired elements within your page     */
+/* To quickly find a section, search for the number within parentheses below.     */
+/* To style anything not included within this page, please add a new style        */
+/* sheet specific to the .html page you're working with.                          */
+/* (1) Universal/CSS Reset Settings - Font, Link, and List styles                 */
+/* (2) Header - practically universal, should only contain minor changes at the   */
+/*     page level.  Also contains popup menu CSS for mobile layout.               */
+/* (3) Grid Areas - yes, these sections will be repeated, but please do not       */
+/*      add any CSS to this section other than "grid-area."  Thanks!              */
+/* (4) Wrapper - This is how we lay out the grid, and can be customized per page  */
+/* (5) Media queries                                                              */
+/* (6) Body - <p>, <article>, most header elements should be in this section      */
+/* (7) Footer -                                                                   */
+
+
+
+/* (1)  Universal Settings */
+* {
+  font-family: atrament-web, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%
+}
+
+li {
+  list-style: none;
+}
+
+/* (2) Header */
+
+header {
+  background-color: white;
+  box-shadow: 1px 1px 1px black;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  height: auto;
+  justify-content: space-between;
+  position: fixed;
+  position: absolute;
+  width: 100%;
+}
+
+.header__logo {
+  height: 95%;
+  width: auto;
+  margin: 2px;
+  max-height: 4rem;
+  margin-bottom: -0.5rem;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+  padding: .5rem;
+}
+
+header ul {
+  font-size: 1rem;
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  align-items: center;
+}
+
+.header__search {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header__search__box {
+  height: 2rem;
+  width: 20rem;
+  border-radius: 5px;
+  border-style: solid;
+  padding-left: 1rem;
+  padding-right: 3rem;
+  margin-left: 5rem;
+  font-size: 1rem;
+}
+
+.header__search__button {
+  height: 2rem;
+  width: 2rem;
+  background-color: transparent;
+  border-radius: 360px;
+  border-style: none;
+  margin-left: -2rem;
+}
+
+.header__search__button:hover {
+  color: #ff5d00;
+}
+
+.header__button {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 1.3rem;
+  height: 2rem;
+  margin: 0.5rem;
+  min-width: 72px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header__button:hover {
+  background-color: #ff5d00;
+  color: white;
+  border-color: #ff5d00;
+}
+
+/* Mobile Popup Menu CSS - this makes the popup work */
+.hide {
+  display: none;
+}
+
+.button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 2.5rem;
+  font-style: bold;
+  margin-top: 0px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px black;
+  color: #026670;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.button:hover {
+  background-color: #ff5d00;
+  color: white;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay.light {
+  background: rgba(255, 255, 255, 0.5);
+}
+.overlay .cancel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+#p1:checked ~ #popup1.overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 75px auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #fff;
+  border: 1px solid #666;
+  width: 475px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.light .popup {
+  border-color: #aaa;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.popup h2 {
+  background-color: #026670;
+  margin-top: 0;
+  color: white;
+}
+
+.popup .close {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 20px;
+  right: 20px;
+  opacity: 1;
+  transition: all 200ms;
+  font-size: 5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  margin-top: -1rem;
+}
+.popup .close:hover {
+  opacity: 1;
+  color: #ff5d00;
+}
+
+.popup .menu__content {
+  max-height: 400px;
+  overflow: auto;
+}
+.popup p {
+  margin: 0 0 1em;
+}
+.popup p:last-child {
+  margin: 0;
+}
+
+.hide {
+  height: 0px;
+  width: 0px;
+  display: hide;
+  position: absolute;
+}
+
+.close {
+  font-size: 40px;
+}
+
+/* Mobile popup menu CSS - This is the content of the popup menu */
+.menu__logo__png {
+  height: 100%;
+  width: auto;
+  margin: 1rem;
+  margin-top: -1rem;
+  max-height: 80px;
+}
+
+.menu__search {
+  display: flex;
+  margin: 0.5rem;
+  align-items: center;
+}
+
+.menu__search__box {
+  height: 2rem;
+  width: 27.5rem;
+  border-radius: 5px;
+  border-style: solid;
+  padding-left: 1rem;
+}
+
+.menu__search__button {
+  height: 2rem;
+  width: 2rem;
+  background-color: transparent;
+  border-radius: 360px;
+  border-style: none;
+  margin-left: -2rem;
+}
+
+.menu__search__button:hover {
+  color: #ff5d00;
+}
+
+.menu__button {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 1.3rem;
+  height: 2rem;
+  margin: 0.5rem;
+  min-width: 72px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.menu__button:hover {
+  background-color: #ff5d00;
+  color: white;
+  border-color: #ff5d00;
+}
+
+/* (3) Grid Areas */
+.content {
+  grid-area: content;
+}
+
+.content2 {
+  grid-area: content2;
+}
+
+.content3 {
+  grid-area: content3;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.header {
+  grid-area: header;
+}
+
+/* (4) Wrapper */
+.wrapper {
+  background-color: white;
+  color: black;
+  padding-top: 4rem;
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-template-areas:
+  "content"
+  "content2"
+  "content3"
+  "footer";
+}
+
+.wrapper h2 {
+  background-color: #ff5d00;
+  box-shadow: 1px 1px 1px  black;
+  color: white;
+  padding: 1rem;
+  margin: -10px;
+}
+
+.wrapper p {
+  margin-top: 1rem;
+}
+
+/* (5) Media Queries */
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    padding-top: 6rem;
+    grid-template-columns: 30% auto;
+    grid-template-areas:
+    "viewport viewport"
+    "content content"
+    "footer  footer";
+  }
+  
+  .viewport {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 951px) {
+  .wrapper {
+    grid-row-gap: 1rem;
+    grid-template-columns: 30% auto 30%;
+    grid-template-areas:
+    "viewport viewport viewport"
+    ". content ."
+    "footer  footer  footer";
+    max-width: 100%;
+  }
+  
+  .mobile__menu__button {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .header__search__box {
+    display: none;
+  }
+  
+  .header__search__button {
+    display: none;
+  }
+  
+  .header__button {
+    display: none;
+  }
+  
+  .mobile__menu__button {
+    font-size: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+  }
+  
+  .mobile__menu__button:hover {
+    text-shadow: 1px 1px 10px black;
+    color: #ff5d00;
+  }
+}
+
+
+/* (6) Body */
+
+.box {
+  background-color: white;
+  color: black;
+  border-style: none;
+  box-shadow: 1px 1px 5px black;
+  padding: 10px;
+  font-size: 150%;
+}
+
+.content,
+.content2,
+.content3 {
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
+  margin-bottom: 6rem;
+}
+
+.author__add__form {
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  display: flex;
+  flex-direction: rows;
+  grid-gap: 2px;
+  margin: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.author__add__button {
+  background-color: white;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  font-size: 1.3rem;
+  height: 2rem;
+  margin: 0.5rem;
+  min-width: 72px;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  float: right;
+}
+
+.author__add__button:hover {
+  background-color: #ff5d00;
+  color: white;
+  border-color: #ff5d00;
+}
+
+.author__name {
+  width: 100%
+}
+
+/* (7) Footer */
+.footer {
+  background-color: white;
+  border-radius: 0px;
+  border-style: none;
+  box-shadow: 1px 1px 1px 1px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 1rem;
+}
