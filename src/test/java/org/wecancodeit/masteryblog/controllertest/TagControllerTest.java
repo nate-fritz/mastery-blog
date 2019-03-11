@@ -46,11 +46,11 @@ public class TagControllerTest {
 	}
 	
     @Test
-	public void shouldAddTagToModel() {
+	public void shouldAddTagToModel() throws Exception {
 		Long tagId = 1L;
 		when(tagRepo.findById(tagId)).thenReturn(Optional.of(tag));
 		
-		underTest.singleTag(tagId, model);
+		underTest.getTag(tagId, model);
 		
 		verify(model).addAttribute("tag", tag);
 	}

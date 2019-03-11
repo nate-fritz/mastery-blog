@@ -26,11 +26,15 @@ public class AuthorControllerTest {
 	@Mock
 	private AuthorRepository authorRepo;
 	
+
+	
 	@Mock
 	private Author author;
 	
 	@Mock
 	private Author secondAuthor;
+	
+	
 	
 	@Mock
 	private Model model;
@@ -46,11 +50,12 @@ public class AuthorControllerTest {
 	}
 	
     @Test
-	public void shouldAddAuthorToModel() {
+	public void shouldAddAuthorToModel() throws Exception {
 		Long authorId = 1L;
+		
 		when(authorRepo.findById(authorId)).thenReturn(Optional.of(author));
 		
-		underTest.getAuthor(authorId, model);
+		underTest.getAuthorForm(model);
 		
 		verify(model).addAttribute("author", author);
 	}
