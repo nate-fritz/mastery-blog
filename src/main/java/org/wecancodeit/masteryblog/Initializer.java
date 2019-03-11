@@ -1,5 +1,7 @@
 package org.wecancodeit.masteryblog;
 
+import java.time.LocalDateTime;
+
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
@@ -36,12 +38,12 @@ public class Initializer implements CommandLineRunner {
 		Tag helpful = tagRepo.save(new Tag("Helpful"));
 		Tag unhelpful = tagRepo.save(new Tag("Unhelpful"));
 		
-		
 		Category comics = categoryRepo.save(new Category("Comics"));
 		Category movies = categoryRepo.save(new Category("Movies"));
 		Category videoGames = categoryRepo.save(new Category("Video Games"));
 		Category fishing = categoryRepo.save(new Category("Fishing"));
 		
+
 		Author jimJewell = authorRepo.save(new Author("Jim Jewell"));
 		Author nateFritz = authorRepo.save(new Author("Nate Fritz"));
 		Author jackHandey = authorRepo.save(new Author("Jack Handey"));

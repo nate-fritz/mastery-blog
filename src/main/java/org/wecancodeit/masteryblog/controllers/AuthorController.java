@@ -34,7 +34,10 @@ public class AuthorController {
 			throw new Exception("Author not found.");
 		}
 		return "authors/author";
+
 	}
+
+
 	
 //	Allows linking to authors/add page
 	@GetMapping("/")

@@ -14,8 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
-
-
 @Entity
 public class Post {
 
@@ -24,6 +22,7 @@ public class Post {
 	private Long id;
 	private String title;
 	private LocalDateTime time;
+
 	@Lob
 	private String body;
 
@@ -36,6 +35,8 @@ public class Post {
 	@ManyToMany
 	private List<Tag> tags;
 
+	
+			
 	public Post() {
 	}
 
